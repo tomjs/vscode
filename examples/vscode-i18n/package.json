@@ -1,0 +1,46 @@
+{
+  "name": "vscode-extension",
+  "private": true,
+  "displayName": "%displayName%",
+  "description": "%description%",
+  "version": "0.0.0",
+  "publisher": "tomjs",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14",
+    "vscode": "^1.75.0"
+  },
+  "main": "dist/index.js",
+  "keywords": [
+    "vscode"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "tomjs.xxx.showHello",
+        "title": "%tomjs.commands.hello%",
+        "category": "%displayName%"
+      }
+    ]
+  },
+  "icon": "resources/logo.png",
+  "vsce": {
+    "dependencies": false,
+    "yarn": false
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup --minify"
+  },
+  "dependencies": {
+    "@tomjs/vscode-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "tsup": "^8.0.2"
+  }
+}

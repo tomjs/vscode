@@ -1,0 +1,56 @@
+{
+  "name": "@tomjs/vscode-dev",
+  "version": "0.0.0",
+  "description": "node module",
+  "keywords": [
+    "node"
+  ],
+  "author": {
+    "name": "Tom Gao",
+    "email": "tom@tomgao.cc"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "vscode-dev": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "default": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+      },
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.mts"
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomjs/vscode.git"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@tomjs/logger": "^1.0.0",
+    "@tomjs/node": "^2.1.0",
+    "cac": "^6.7.14",
+    "chalk": "4.1.2",
+    "chokidar": "^3.6.0"
+  }
+}

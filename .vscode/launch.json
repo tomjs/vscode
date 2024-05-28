@@ -1,0 +1,35 @@
+// A launch configuration that compiles the extension and then opens it inside a new window
+// Use IntelliSense to learn about possible attributes.
+// Hover to view descriptions of existing attributes.
+// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug VSCode i18n",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/examples/vscode-i18n"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/examples/vscode-i18n/dist/*.js"
+      ],
+      "preLaunchTask": "i18n:dev"
+    },
+    {
+      "name": "Debug CLI i18n",
+      "type": "node",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/vscode-dev/dist/cli.js",
+      "args": [
+        "i18n",
+        "${workspaceFolder}/examples/vscode-i18n/locales"
+      ],
+      "preLaunchTask": "cli:dev"
+    },
+  ]
+}
