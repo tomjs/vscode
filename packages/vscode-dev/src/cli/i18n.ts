@@ -10,10 +10,13 @@ export function registerLocaleCmd(cli: CAC) {
       'generate package.nls.{locale}.json files based on the provided i18n messages directory',
     )
     .alias('locale')
-    .option('--lang', '[string] i18n source language', {
+    .option('--cwd [cwd]', 'current working directory', {
+      default: process.cwd(),
+    })
+    .option('--lang [lang]', 'i18n source language', {
       default: 'en',
     })
-    .option('--watch', '[boolean] whether to monitor the i18n directory', {
+    .option('--watch', 'whether to monitor the i18n directory', {
       default: false,
     })
     .action((dir: string, options: I18nOptions & CLIOptions) => {

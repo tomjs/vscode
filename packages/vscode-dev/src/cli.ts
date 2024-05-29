@@ -12,7 +12,7 @@ try {
   console.error(e);
 }
 
-const cli = cac('vscode-dev').option('--verbose', '[boolean] display verbose output', {
+const cli = cac('vscode-dev').option('--verbose', 'display verbose output', {
   default: process.env.NODE_ENV === 'development',
 });
 

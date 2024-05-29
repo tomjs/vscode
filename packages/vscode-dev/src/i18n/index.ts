@@ -8,6 +8,11 @@ import { logger } from '../cli/utils';
 
 export interface I18nOptions {
   /**
+   * current working directory
+   * @default process.cwd()
+   */
+  cwd?: string;
+  /**
    * i18n directory
    * @default "locales"
    */
@@ -27,7 +32,8 @@ export interface I18nOptions {
 const ROOT = cwd();
 
 export function generateNlsJson(opts: I18nOptions) {
-  opts.dir = opts.dir ?? path.join(process.cwd(), 'locales');
+  opts.cwd = opts.cwd ?? ROOT;
+  opts.dir = opts.dir ?? path.join(opts.cwd, 'locales');
   opts.lang = opts.lang ?? 'en';
 
   console.debug('i18n', opts);
@@ -65,7 +71,7 @@ function gen(opts: I18nOptions) {
 
     const fileName =
       locale === opts.lang ? './package.nls.json' : `./package.nls.${locale.toLowerCase()}.json`;
-    writeJsonSync(path.join(ROOT, fileName), messages);
+    writeJsonSync(path.join(opts.cwd!, fileName), messages);
 
     logger.success(`${chalk.blue(name)} => ${chalk.green(fileName)}`);
   });

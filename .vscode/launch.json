@@ -27,7 +27,8 @@
       "program": "${workspaceFolder}/packages/vscode-dev/dist/cli.js",
       "args": [
         "i18n",
-        "${workspaceFolder}/examples/vscode-i18n/locales"
+        "--cwd",
+        "${workspaceFolder}/examples/vscode-i18n"
       ],
       "preLaunchTask": "cli:dev"
     },
