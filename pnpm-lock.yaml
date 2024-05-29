@@ -14,6 +14,9 @@ importers:
       '@tomjs/commitlint':
         specifier: ^3.2.0
         version: 3.2.0(@commitlint/cli@19.3.0(@types/node@18.19.33)(typescript@5.4.5))
+      '@tomjs/esbuild-extra':
+        specifier: ^2.0.0
+        version: 2.0.0(prettier@3.2.5)
       '@tomjs/eslint':
         specifier: ^3.1.0
         version: 3.1.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
@@ -82,7 +85,7 @@ importers:
         specifier: ^6.7.14
         version: 6.7.14
       chalk:
-        specifier: 4.1.2
+        specifier: ^4.1.2
         version: 4.1.2
       chokidar:
         specifier: ^3.6.0
@@ -656,6 +659,15 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       '@commitlint/cli': ^19.3.0
+
+  '@tomjs/esbuild-extra@2.0.0':
+    resolution: {integrity: sha512-lFII7vm76avzY45e8AJy5d+UEI0+1ELGHLnsz2zOas4DMKKypmUCMJTZ8rdlLGtG4m92zWKo4KPOX0uxe+VvDA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      prettier: ^3.0.0
+    peerDependenciesMeta:
+      prettier:
+        optional: true
 
   '@tomjs/eslint@3.1.0':
     resolution: {integrity: sha512-IM1ttVSmEBGi8bpGPNhvPWSBXACAf+ynjItV1LtlfaZ2RWYVlV6pHJReibenRZZVKc0uJYClCdMKr+4X1fuppw==}
@@ -3082,6 +3094,15 @@ snapshots:
     dependencies:
       '@commitlint/cli': 19.3.0(@types/node@18.19.33)(typescript@5.4.5)
       '@commitlint/config-conventional': 19.2.2
+
+  '@tomjs/esbuild-extra@2.0.0(prettier@3.2.5)':
+    dependencies:
+      '@tomjs/node': 2.1.0
+      chalk: 4.1.2
+      execa: 5.1.1
+      fast-glob: 3.3.2
+    optionalDependencies:
+      prettier: 3.2.5
 
   '@tomjs/eslint@3.1.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)':
     dependencies:
