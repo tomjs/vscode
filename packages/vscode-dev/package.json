@@ -1,9 +1,12 @@
 {
   "name": "@tomjs/vscode-dev",
   "version": "1.2.1",
-  "description": "node module",
+  "description": "Some development tools to simplify the development of vscode extensions",
   "keywords": [
-    "node"
+    "vscode",
+    "extension",
+    "dev",
+    "cli"
   ],
   "author": {
     "name": "Tom Gao",

@@ -1,9 +1,12 @@
 {
   "name": "@tomjs/vscode-utils",
   "version": "1.1.1",
-  "description": "node module",
+  "description": "Some utilities to simplify the development of VSCode Extensions",
   "keywords": [
-    "node"
+    "vscode",
+    "extension",
+    "utils",
+    "utilities"
   ],
   "author": {
     "name": "Tom Gao",

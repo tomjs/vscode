@@ -6,6 +6,10 @@
 
 > 一些实用程序，用于简化 [vscode 扩展](https://marketplace.visualstudio.com/VSCode) 的开发
 
+## 过时的
+
+改包名为 [@tomjs/vscode](https://www.npmjs.com/package/@tomjs/vscode)
+
 ## 特性
 
 - 支持使用 `package.nls.json` 用于国际化

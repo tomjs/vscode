@@ -6,6 +6,10 @@
 
 > Some utilities to simplify the development of [VSCode Extensions](https://marketplace.visualstudio.com/VSCode)
 
+## Deprecate
+
+Change package name to [@tomjs/vscode](https://www.npmjs.com/package/@tomjs/vscode)
+
 ## Features
 
 - Supports `package.nls.json` for internationalization
