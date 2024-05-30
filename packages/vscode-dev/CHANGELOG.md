@@ -1,3 +1,7 @@
+## [1.2.2](https://github.com/tomjs/vscode/compare/vscode-dev-v1.2.1...vscode-dev%401.2.2) (2024-05-30)
+
+- docs: change readme and changelog [9c05393](https://github.com/tomjs/vscode/commit/9c05393)
+
 ## [1.2.1](https://github.com/tomjs/vscode/compare/vscode-dev%401.2.0...vscode-dev%401.2.1) (2024-05-30)
 
 - docs: modify changelog git tag [a230256](https://github.com/tomjs/vscode/commit/a230256)
