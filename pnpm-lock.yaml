@@ -12,11 +12,8 @@ importers:
         specifier: ^19.3.0
         version: 19.3.0(@types/node@18.19.33)(typescript@5.4.5)
       '@tomjs/commitlint':
-        specifier: ^3.2.0
-        version: 3.2.0(@commitlint/cli@19.3.0(@types/node@18.19.33)(typescript@5.4.5))
-      '@tomjs/esbuild-extra':
-        specifier: ^2.0.0
-        version: 2.0.0(prettier@3.2.5)
+        specifier: ^3.3.0
+        version: 3.3.0(@commitlint/cli@19.3.0(@types/node@18.19.33)(typescript@5.4.5))
       '@tomjs/eslint':
         specifier: ^3.1.0
         version: 3.1.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)
@@ -654,20 +651,11 @@ packages:
   '@rushstack/ts-command-line@4.19.1':
     resolution: {integrity: sha512-J7H768dgcpG60d7skZ5uSSwyCZs/S2HrWP1Ds8d1qYAyaaeJmpmmLr9BVw97RjFzmQPOYnoXcKA4GkqDCkduQg==}
 
-  '@tomjs/commitlint@3.2.0':
-    resolution: {integrity: sha512-sitfJ8zt5uxM0lYrPuYK/wnQtFRo7tQSXPAxvygs/LpzAHJU4zcu9/XrIv39iMfevbn2mc24+UYpuO/CuG6Zvw==}
+  '@tomjs/commitlint@3.3.0':
+    resolution: {integrity: sha512-BqiEMo8g22j+NH+BXQcduDcm0keXz3sqWQ1Nwdb7Q7Z933u5I391suQAmzNyuue7nwZIGomA//jsuHnHGsiAmg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@commitlint/cli': ^19.3.0
-
-  '@tomjs/esbuild-extra@2.0.0':
-    resolution: {integrity: sha512-lFII7vm76avzY45e8AJy5d+UEI0+1ELGHLnsz2zOas4DMKKypmUCMJTZ8rdlLGtG4m92zWKo4KPOX0uxe+VvDA==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      prettier: ^3.0.0
-    peerDependenciesMeta:
-      prettier:
-        optional: true
 
   '@tomjs/eslint@3.1.0':
     resolution: {integrity: sha512-IM1ttVSmEBGi8bpGPNhvPWSBXACAf+ynjItV1LtlfaZ2RWYVlV6pHJReibenRZZVKc0uJYClCdMKr+4X1fuppw==}
@@ -3090,19 +3078,10 @@ snapshots:
       - '@types/node'
     optional: true
 
-  '@tomjs/commitlint@3.2.0(@commitlint/cli@19.3.0(@types/node@18.19.33)(typescript@5.4.5))':
+  '@tomjs/commitlint@3.3.0(@commitlint/cli@19.3.0(@types/node@18.19.33)(typescript@5.4.5))':
     dependencies:
       '@commitlint/cli': 19.3.0(@types/node@18.19.33)(typescript@5.4.5)
       '@commitlint/config-conventional': 19.2.2
-
-  '@tomjs/esbuild-extra@2.0.0(prettier@3.2.5)':
-    dependencies:
-      '@tomjs/node': 2.1.0
-      chalk: 4.1.2
-      execa: 5.1.1
-      fast-glob: 3.3.2
-    optionalDependencies:
-      prettier: 3.2.5
 
   '@tomjs/eslint@3.1.0(eslint@8.57.0)(prettier@3.2.5)(typescript@5.4.5)':
     dependencies:

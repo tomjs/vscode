@@ -1,4 +1,3 @@
-import esbuildExtra from '@tomjs/esbuild-extra';
 import { defineConfig } from 'tsup';
 
 export default defineConfig(options => {
@@ -15,6 +14,5 @@ export default defineConfig(options => {
     sourcemap: isDev,
     splitting: true,
     minifyWhitespace: true,
-    onSuccess: esbuildExtra(),
   };
 });
