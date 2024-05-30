@@ -9,4 +9,4 @@
 | name | version | node |
 | --- | --- | --- |
 | [@tomjs/vscode-dev](./packages/vscode-dev/README.md) | ![npm](https://img.shields.io/npm/v/@tomjs/vscode-dev) | ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode-dev) |
-| [@tomjs/vscode-utils](./packages/vscode-utils/README.md) | ![npm](https://img.shields.io/npm/v/@tomjs/vscode-utils) | ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode-utils) |
+| [@tomjs/vscode](./packages/vscode-utils/README.md) | ![npm](https://img.shields.io/npm/v/@tomjs/vscode) | ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode) |

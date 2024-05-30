@@ -1,5 +1,5 @@
 {
-  "name": "@tomjs/vscode-utils",
+  "name": "@tomjs/vscode",
   "version": "1.1.2",
   "description": "Some utilities to simplify the development of VSCode Extensions",
   "keywords": [

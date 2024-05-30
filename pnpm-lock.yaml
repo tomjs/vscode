@@ -59,9 +59,9 @@ importers:
 
   examples/vscode-i18n:
     dependencies:
-      '@tomjs/vscode-utils':
+      '@tomjs/vscode':
         specifier: workspace:*
-        version: link:../../packages/vscode-utils
+        version: link:../../packages/vscode
     devDependencies:
       '@types/vscode':
         specifier: ^1.75.0
@@ -69,6 +69,15 @@ importers:
       tsup:
         specifier: ^8.0.2
         version: 8.0.2(@microsoft/api-extractor@7.43.0(@types/node@18.19.33))(postcss@8.4.38)(typescript@5.4.5)
+
+  packages/vscode:
+    dependencies:
+      '@tomjs/node':
+        specifier: ^2.1.0
+        version: 2.1.0
+      '@types/vscode':
+        specifier: ^1.56.0
+        version: 1.89.0
 
   packages/vscode-dev:
     dependencies:
@@ -87,15 +96,6 @@ importers:
       chokidar:
         specifier: ^3.6.0
         version: 3.6.0
-
-  packages/vscode-utils:
-    dependencies:
-      '@tomjs/node':
-        specifier: ^2.1.0
-        version: 2.1.0
-      '@types/vscode':
-        specifier: ^1.56.0
-        version: 1.89.0
 
 packages:
 

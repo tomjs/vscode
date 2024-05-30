@@ -1,4 +1,4 @@
-import { i18n, initExtension } from '@tomjs/vscode-utils';
+import { i18n, initExtension } from '@tomjs/vscode';
 import type { ExtensionContext } from 'vscode';
 import { commands, window } from 'vscode';
 

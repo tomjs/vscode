@@ -37,7 +37,7 @@
     "build": "tsup --minify"
   },
   "dependencies": {
-    "@tomjs/vscode-utils": "workspace:*"
+    "@tomjs/vscode": "workspace:*"
   },
   "devDependencies": {
     "@types/vscode": "^1.75.0",
