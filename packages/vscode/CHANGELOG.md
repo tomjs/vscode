@@ -1,3 +1,7 @@
+## 2.0.0 (2024-05-30)
+
+- refactor: rename package vscode-utils to vscode [6573dc4](https://github.com/tomjs/vscode/commit/6573dc4)
+
 ## [1.1.2](https://github.com/tomjs/vscode/compare/vscode-utils-v1.1.1...vscode-utils%401.1.2) (2024-05-30)
 
 - docs: change readme and changelog [9c05393](https://github.com/tomjs/vscode/commit/9c05393)
