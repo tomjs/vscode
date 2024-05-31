@@ -6,7 +6,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug VSCode i18n",
+      "name": "Debug Extension i18n",
       "type": "extensionHost",
       "request": "launch",
       "args": [

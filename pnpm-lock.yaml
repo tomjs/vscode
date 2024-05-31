@@ -63,6 +63,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/vscode
     devDependencies:
+      '@tomjs/vscode-dev':
+        specifier: workspace:*
+        version: link:../../packages/vscode-dev
       '@types/vscode':
         specifier: ^1.75.0
         version: 1.89.0
