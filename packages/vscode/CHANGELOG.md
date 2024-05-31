@@ -1,3 +1,7 @@
+## [2.0.1](https://github.com/tomjs/vscode/compare/vscode%402.0.0...vscode%402.0.1) (2024-05-31)
+
+- chore: format output code to improve readability [25f3c44](https://github.com/tomjs/vscode/commit/25f3c44)
+
 ## 2.0.0 (2024-05-30)
 
 - refactor: rename package vscode-utils to vscode [6573dc4](https://github.com/tomjs/vscode/commit/6573dc4)

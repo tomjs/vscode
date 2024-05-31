@@ -1,3 +1,9 @@
+## [1.2.3](https://github.com/tomjs/vscode/compare/vscode-dev%401.2.2...vscode-dev%401.2.3) (2024-05-31)
+
+- chore: format output code to improve readability [25f3c44](https://github.com/tomjs/vscode/commit/25f3c44)
+- fix: changelog [73a3694](https://github.com/tomjs/vscode/commit/73a3694)
+- fix: update changelog git tag [3657419](https://github.com/tomjs/vscode/commit/3657419)
+
 ## [1.2.2](https://github.com/tomjs/vscode/compare/vscode-dev%401.2.1...vscode-dev%401.2.2) (2024-05-30)
 
 - docs: change readme and changelog [9c05393](https://github.com/tomjs/vscode/commit/9c05393)
