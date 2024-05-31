@@ -33,16 +33,16 @@
     "yarn": false
   },
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup --minify",
-    "i18n": "vscode-dev i18n --watch"
+    "dev": "run-p dev:*",
+    "build": "tsup",
+    "dev:lib": "tsup --watch",
+    "dev:i18n": "vscode-dev i18n --watch"
   },
   "dependencies": {
     "@tomjs/vscode": "workspace:*"
   },
   "devDependencies": {
     "@tomjs/vscode-dev": "workspace:*",
-    "@types/vscode": "^1.75.0",
-    "tsup": "^8.0.2"
+    "@types/vscode": "^1.75.0"
   }
 }
