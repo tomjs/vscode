@@ -5,27 +5,18 @@ export default defineConfig(options => {
 
   return [
     {
-      entry: ['src/index.ts'],
+      entry: ['src/index.ts', 'src/cli.ts'],
       format: ['esm', 'cjs'],
-      target: ['es2021', 'node16'],
+      target: 'node16',
       shims: true,
-      clean: false,
+      clean: true,
       dts: true,
       sourcemap: isDev,
       splitting: true,
+      minifyWhitespace: !isDev,
       env: {
         NODE_ENV: isDev ? 'development' : 'production',
       },
-    },
-    {
-      entry: ['src/cli.ts'],
-      format: ['cjs'],
-      target: ['es2021', 'node16'],
-      shims: false,
-      clean: false,
-      sourcemap: isDev,
-      dts: false,
-      splitting: true,
     },
   ];
 });

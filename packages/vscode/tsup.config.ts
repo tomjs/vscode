@@ -6,13 +6,13 @@ export default defineConfig(options => {
   return {
     entry: ['src/index.ts'],
     format: ['esm', 'cjs'],
-    target: ['es2021', 'node16'],
+    target: 'node14',
     external: ['vscode'],
     shims: true,
     clean: true,
     dts: true,
     sourcemap: isDev,
     splitting: true,
-    minifyWhitespace: true,
+    minifyWhitespace: !isDev,
   };
 });

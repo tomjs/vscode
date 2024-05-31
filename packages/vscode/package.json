@@ -44,7 +44,7 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup && prettier --write ./dist"
   },
   "dependencies": {
     "@tomjs/node": "^2.1.0"

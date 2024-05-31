@@ -69,9 +69,6 @@ importers:
       '@types/vscode':
         specifier: ^1.75.0
         version: 1.89.0
-      tsup:
-        specifier: ^8.0.2
-        version: 8.0.2(@microsoft/api-extractor@7.43.0(@types/node@18.19.33))(postcss@8.4.38)(typescript@5.4.5)
 
   packages/vscode:
     dependencies:
