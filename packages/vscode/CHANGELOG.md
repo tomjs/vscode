@@ -1,3 +1,7 @@
+## [2.1.0](https://github.com/tomjs/vscode/compare/vscode%402.0.2...vscode%402.1.0) (2024-06-05)
+
+- feat: add getUserDataPath method [74c9c7c](https://github.com/tomjs/vscode/commit/74c9c7c)
+
 ## [2.0.2](https://github.com/tomjs/vscode/compare/vscode%402.0.1...vscode%402.0.2) (2024-06-05)
 
 - chore: add prepublishOnly script [986f5a5](https://github.com/tomjs/vscode/commit/986f5a5)
