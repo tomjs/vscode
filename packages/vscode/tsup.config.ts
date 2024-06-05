@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsup';
+import pkg from './package.json';
 
 export default defineConfig(options => {
   const isDev = !!options.watch;
@@ -7,7 +8,7 @@ export default defineConfig(options => {
     entry: ['src/index.ts'],
     format: ['esm', 'cjs'],
     target: 'node14',
-    external: ['vscode'],
+    external: Object.keys(pkg.dependencies).concat('vscode'),
     shims: true,
     clean: true,
     dts: true,
