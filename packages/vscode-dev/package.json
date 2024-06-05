@@ -32,7 +32,8 @@
   },
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup && rimraf --glob ./dist/cli.mjs ./dist/cli.d.*ts && prettier --write ./dist"
+    "build": "tsup && rimraf --glob ./dist/cli.mjs ./dist/cli.d.*ts && prettier --write ./dist",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@tomjs/logger": "^1.0.0",
