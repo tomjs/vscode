@@ -1,4 +1,4 @@
-import { i18n, initExtension } from '@tomjs/vscode';
+import { getDotVSCodePath, getUserDataPath, i18n, initExtension } from '@tomjs/vscode';
 import type { ExtensionContext } from 'vscode';
 import { commands, window } from 'vscode';
 
@@ -10,6 +10,9 @@ export function activate(context: ExtensionContext) {
       window.showInformationMessage(i18n.t('tomjs.commands.hello'));
     }),
   );
+
+  console.log('user data path:', getUserDataPath());
+  console.log('.vscode path:', getDotVSCodePath());
 }
 
 export function deactivate() {}
