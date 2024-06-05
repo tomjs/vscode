@@ -1,3 +1,9 @@
+## [2.0.2](https://github.com/tomjs/vscode/compare/vscode%402.0.1...vscode%402.0.2) (2024-06-05)
+
+- chore: add prepublishOnly script [986f5a5](https://github.com/tomjs/vscode/commit/986f5a5)
+- feat: class I18n use NlsI18n interface [3622882](https://github.com/tomjs/vscode/commit/3622882)
+- chore: exclude all dependencies [90fd3ea](https://github.com/tomjs/vscode/commit/90fd3ea)
+
 ## [2.0.1](https://github.com/tomjs/vscode/compare/vscode%402.0.0...vscode%402.0.1) (2024-05-31)
 
 - chore: format output code to improve readability [25f3c44](https://github.com/tomjs/vscode/commit/25f3c44)
