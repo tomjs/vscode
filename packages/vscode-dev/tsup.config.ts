@@ -1,19 +1,21 @@
 import { defineConfig } from 'tsup';
+import pkg from './package.json';
 
 export default defineConfig(options => {
   const isDev = !!options.watch;
 
   return [
     {
-      entry: ['src/index.ts', 'src/cli.ts'],
-      format: ['esm', 'cjs'],
+      entry: ['src/index.ts'],
+      format: ['cjs'],
       target: 'node16',
       shims: true,
       clean: true,
-      dts: true,
+      dts: false,
       sourcemap: isDev,
       splitting: true,
-      minifyWhitespace: !isDev,
+      minify: !isDev,
+      external: Object.keys(pkg.dependencies).concat('prettier'),
       env: {
         NODE_ENV: isDev ? 'development' : 'production',
       },

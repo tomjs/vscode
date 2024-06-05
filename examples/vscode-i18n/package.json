@@ -36,7 +36,7 @@
     "dev": "run-p dev:*",
     "build": "tsup",
     "dev:lib": "tsup --watch",
-    "dev:i18n": "vscode-dev i18n --watch"
+    "dev:i18n": "vscode-dev --watch"
   },
   "dependencies": {
     "@tomjs/vscode": "workspace:*"

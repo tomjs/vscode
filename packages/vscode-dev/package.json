@@ -20,22 +20,7 @@
     "dist"
   ],
   "bin": {
-    "vscode-dev": "./dist/cli.js"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": {
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-      },
-      "import": {
-        "default": "./dist/index.mjs",
-        "types": "./dist/index.d.mts"
-      }
-    }
+    "vscode-dev": "./dist/index.js"
   },
   "publishConfig": {
     "access": "public",
@@ -55,5 +40,13 @@
     "cac": "^6.7.14",
     "chalk": "^4.1.2",
     "chokidar": "^3.6.0"
+  },
+  "peerDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    }
   }
 }

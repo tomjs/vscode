@@ -6,6 +6,7 @@
   "engines": {
     "node": ">=18"
   },
+  "packageManager": "pnpm@9.1.4",
   "scripts": {
     "build": "pnpm -r --stream --filter=@tomjs/* build",
     "cli:dev": "pnpm -r --stream --filter \"./packages/vscode-dev\" dev",
