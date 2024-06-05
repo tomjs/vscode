@@ -1,3 +1,8 @@
+## [2.0.0](https://github.com/tomjs/vscode/compare/vscode-dev%401.2.3...vscode-dev%402.0.0) (2024-06-05)
+
+- chore: add prepublishOnly script [986f5a5](https://github.com/tomjs/vscode/commit/986f5a5)
+- feat: remove vscode-dev i18n command and use vscode-dev only [5290dcf](https://github.com/tomjs/vscode/commit/5290dcf)
+
 ## [1.2.3](https://github.com/tomjs/vscode/compare/vscode-dev%401.2.2...vscode-dev%401.2.3) (2024-05-31)
 
 - chore: format output code to improve readability [25f3c44](https://github.com/tomjs/vscode/commit/25f3c44)
