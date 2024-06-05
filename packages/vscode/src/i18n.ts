@@ -25,10 +25,7 @@ export function loadI18n() {
   );
 }
 
-/**
- * Read i18n messages from package.nls.json
- */
-class I18n {
+export interface NlsI18n {
   /**
    * Marks a string for localization. If a localized bundle is available for the language specified by
    * {@link env.language} and the bundle has a localized value for this message, then that localized
@@ -65,6 +62,17 @@ class I18n {
     ...params:
       | [message: string, ...args: Array<string | number | boolean>]
       | [message: string, args: Record<string, any>]
+  ): string;
+}
+
+/**
+ * Read i18n messages from package.nls.json
+ */
+export class I18n implements NlsI18n {
+  t(
+    ...params:
+      | [message: string, ...args: Array<string | number | boolean>]
+      | [message: string, args: Record<string, any>]
   ) {
     if (params.length === 0) {
       return '';
@@ -84,4 +92,4 @@ class I18n {
 /**
  * The i18n instance.
  */
-export const i18n = new I18n();
+export const i18n: NlsI18n = new I18n();
