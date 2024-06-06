@@ -6,7 +6,7 @@ export default defineConfig(options => {
 
   return [
     {
-      entry: ['src/index.ts'],
+      entry: ['src/cli.ts'],
       format: ['cjs'],
       target: 'node16',
       shims: true,

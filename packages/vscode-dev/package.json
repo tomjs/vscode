@@ -20,7 +20,10 @@
     "dist"
   ],
   "bin": {
-    "vscode-dev": "./dist/index.js"
+    "vd": "./dist/cli.js",
+    "vdc": "./dist/cli.js",
+    "vscode-dev": "./dist/cli.js",
+    "vscode-dev-cli": "./dist/cli.js"
   },
   "publishConfig": {
     "access": "public",
@@ -40,7 +43,8 @@
     "@tomjs/node": "^2.1.0",
     "cac": "^6.7.14",
     "chalk": "^4.1.2",
-    "chokidar": "^3.6.0"
+    "chokidar": "^3.6.0",
+    "cosmiconfig": "^9.0.0"
   },
   "peerDependencies": {
     "prettier": "^3.0.0"
