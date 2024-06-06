@@ -1,3 +1,8 @@
+## [2.1.0](https://github.com/tomjs/vscode/compare/vscode-dev%402.0.0...vscode-dev%402.1.0) (2024-06-06)
+
+- feat: add config file [ba73dc1](https://github.com/tomjs/vscode/commit/ba73dc1)
+- chore: no longer beautify code after executing build [8954bdf](https://github.com/tomjs/vscode/commit/8954bdf)
+
 ## [2.0.0](https://github.com/tomjs/vscode/compare/vscode-dev%401.2.3...vscode-dev%402.0.0) (2024-06-05)
 
 - chore: add prepublishOnly script [986f5a5](https://github.com/tomjs/vscode/commit/986f5a5)
