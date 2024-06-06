@@ -1,7 +1,9 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { cwd } from 'node:process';
 import { emptyDirSync, readFile, readJson, readJsonSync, writeFile, writeJson } from '@tomjs/node';
+import type { IExtensionManifest } from '@tomjs/vscode-types';
 import chalk from 'chalk';
 import chokidar from 'chokidar';
 import type { CLIOptions } from './types';
@@ -12,6 +14,41 @@ const ROOT = cwd();
 const DTS_CACHE_DIR = path.join(ROOT, 'node_modules', '.cache/@tomjs/vscode-dev');
 const DTS_CACHE_NLS_PATH = path.join(DTS_CACHE_DIR, 'nls.d.ts');
 const DTS_CACHE_PKG_PATH = path.join(DTS_CACHE_DIR, 'pkg.d.ts');
+
+function createWatcher(paths: string | string[], callback: () => Promise<any>) {
+  const watchPaths = Array.isArray(paths) ? paths : [paths];
+
+  const watchOptions: chokidar.WatchOptions = {
+    ignorePermissionErrors: true,
+    persistent: true,
+    disableGlobbing: os.platform() === 'win32',
+  };
+
+  const watcher = chokidar.watch(watchPaths, watchOptions);
+
+  let ready = false;
+
+  watcher.on('ready', async function () {
+    ready = true;
+
+    logger.info(`watching: ${watchPaths.map(s => chalk.green(s))}`);
+
+    await callback();
+  });
+
+  watcher.on('all', async (event, path) => {
+    if (!ready || ['addDir', 'unlinkDir'].includes(event)) {
+      return;
+    }
+    logger.debug(event, path);
+
+    try {
+      await callback();
+    } catch (e: any) {
+      logger.error(e?.message);
+    }
+  });
+}
 
 export async function generateCode(opts: CLIOptions) {
   emptyDirSync(DTS_CACHE_DIR);
@@ -28,29 +65,8 @@ export async function generateCode(opts: CLIOptions) {
     return;
   }
 
-  {
-    const localePath = opts.locales;
-    chokidar.watch(localePath).on('all', async (event, path) => {
-      logger.debug(event, path);
-      try {
-        await genNls(opts);
-      } catch (e) {
-        logger.error(e);
-      }
-    });
-  }
-
-  {
-    const pkgPath = path.join(opts.cwd, 'package.json');
-    chokidar.watch(pkgPath).on('all', async (event, path) => {
-      logger.debug(event, path);
-      try {
-        await genPackageDts(opts);
-      } catch (e) {
-        logger.error(e);
-      }
-    });
-  }
+  createWatcher(opts.locales, () => genNls(opts));
+  createWatcher(path.join(opts.cwd, 'package.json'), () => genPackageDts(opts));
 }
 
 async function genNls(opts: CLIOptions) {
@@ -118,34 +134,28 @@ declare module '@tomjs/vscode' {
 }
 
 function getDtsType(types: string[]) {
-  let type = 'undefined';
-  if (Array.isArray(types) && types.length) {
-    const list = types.map(type => `'${type}'`);
-    list.sort();
-    type = [...new Set(list)].join(' | ');
+  if (!Array.isArray(types) || types.length === 0) {
+    return;
   }
-  return type;
+  const list = types.map(type => `'${type}'`);
+  list.sort();
+  return [...new Set(list)].join(' | ');
 }
 
-async function genPackageDts(opts: CLIOptions) {
-  let pkg: any = {};
-  try {
-    pkg = (await readJson(path.join(opts.cwd!, 'package.json'))) || {};
-  } catch (e: any) {
-    logger.error(e?.message);
-  }
-
+function getCommandDts(pkg: IExtensionManifest, opts: CLIOptions) {
   const commands = pkg?.contributes?.commands || [];
   const command = getDtsType(commands.map(s => s.command));
   const builtin = getDtsType([...new Set(opts.builtin || [])]);
+  if (!command && !builtin) {
+    return '';
+  }
 
-  const code = /* ts */ `
-declare module 'vscode' {
-  export type BuiltinCommand = ${builtin};
-
-  export type UserCommand = ${command};
+  return /* ts */ `
+  export type BuiltinCommand = ${builtin || 'undefined'};
+  export type UserCommand = ${command || 'undefined'};
 
   export namespace commands {
+
     export function registerCommand( command: UserCommand,
       callback: (...args: any[]) => any,
       thisArg?: any,
@@ -170,6 +180,54 @@ declare module 'vscode' {
   export interface StatusBarItem {
     command?: BuiltinCommand | UserCommand;
   }
+`;
+}
+
+function getViewDts(pkg: IExtensionManifest) {
+  const views = pkg?.contributes?.views || {};
+  const viewKeys = Object.keys(views);
+  if (viewKeys.length === 0) {
+    return '';
+  }
+
+  const viewIds = viewKeys.reduce((acc, cur) => {
+    const ids = (views[cur] || []).map(view => view.id);
+    return acc.concat(ids);
+  }, [] as string[]);
+
+  const viewType = getDtsType(viewIds);
+  if (!viewType) {
+    return '';
+  }
+
+  return /* ts */ `
+  export namespace window {
+    type ViewId = ${viewType};
+
+    export function registerTreeDataProvider<T>(viewId: ViewId, treeDataProvider: TreeDataProvider<T>): Disposable;
+    export function createTreeView<T>(viewId: ViewId, options: TreeViewOptions<T>): TreeView<T>;
+    export function registerWebviewViewProvider(viewId: ViewId, provider: WebviewViewProvider, options?: {
+      readonly webviewOptions?: {
+        readonly retainContextWhenHidden?: boolean;
+			};
+		}): Disposable;
+  }
+  `;
+}
+
+async function genPackageDts(opts: CLIOptions) {
+  let pkg = {} as IExtensionManifest;
+  try {
+    pkg = (await readJson(path.join(opts.cwd!, 'package.json'))) || {};
+  } catch (e: any) {
+    logger.error(e?.message);
+  }
+
+  const code = /* ts */ `
+declare module 'vscode' {
+  ${getCommandDts(pkg, opts)}
+
+  ${getViewDts(pkg)}
 }
 `;
 
@@ -193,6 +251,6 @@ async function mergeDts(opts: CLIOptions) {
 
   await writeFile(
     path.join(getDtsOutputPath(opts.cwd!), opts.dtsName!),
-    `// generated by @tomjs/vscode-dev\n\n${code}`,
+    `// generated by @tomjs/vscode-dev\n${code}`,
   );
 }

@@ -46,6 +46,9 @@
     "chokidar": "^3.6.0",
     "cosmiconfig": "^9.0.0"
   },
+  "devDependencies": {
+    "@tomjs/vscode-types": "workspace:^"
+  },
   "peerDependencies": {
     "prettier": "^3.0.0"
   },

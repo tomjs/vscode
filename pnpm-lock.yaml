@@ -102,6 +102,12 @@ importers:
       prettier:
         specifier: ^3.0.0
         version: 3.2.5
+    devDependencies:
+      '@tomjs/vscode-types':
+        specifier: workspace:^
+        version: link:../vscode-types
+
+  packages/vscode-types: {}
 
 packages:
 
