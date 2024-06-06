@@ -1,6 +1,6 @@
 {
   "name": "@tomjs/vscode-dev",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Some development tools to simplify the development of vscode extensions",
   "keywords": [
     "vscode",

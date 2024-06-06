@@ -1,3 +1,7 @@
+## [2.2.0](https://github.com/tomjs/vscode/compare/vscode-dev%402.1.0...vscode-dev%402.2.0) (2024-06-06)
+
+- feat: add viewIds from contributes.views [c205db2](https://github.com/tomjs/vscode/commit/c205db2)
+
 ## [2.1.0](https://github.com/tomjs/vscode/compare/vscode-dev%402.0.0...vscode-dev%402.1.0) (2024-06-06)
 
 - feat: add config file [ba73dc1](https://github.com/tomjs/vscode/commit/ba73dc1)
