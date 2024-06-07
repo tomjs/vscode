@@ -37,11 +37,13 @@ cli
   .option('-w, --watch', 'Watch mode')
   .option('--verbose', 'Display verbose output')
   .action(async (cwd: string, options: CLIOptions) => {
+    logger.enableDebug(options.verbose);
     const cliOpts = Object.assign({ cwd }, options);
-    console.log('cli options:', cliOpts);
+
+    logger.debug('cli options:', cliOpts);
 
     const config = await getConfig(cliOpts);
-    console.log('config file:', config);
+    logger.debug('config file:', config);
 
     const mergedOpts = Object.assign(
       {
@@ -52,9 +54,10 @@ cli
     ) as CLIOptions;
 
     mergedOpts.cwd ||= process.cwd();
-    console.log('merged options:', mergedOpts);
-
     logger.enableDebug(options.verbose);
+
+    logger.debug('merged options:', mergedOpts);
+
     await generateCode(mergedOpts);
   });
 
