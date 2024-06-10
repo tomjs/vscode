@@ -25,7 +25,18 @@
         "title": "%tomjs.commands.hello%",
         "category": "%displayName%"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "%displayName%",
+      "properties": {
+        "tomjs.xxx.hello": {
+          "type": "string",
+          "default": "Hello World",
+          "description": "%description%"
+        }
+      }
+    }
   },
   "icon": "resources/logo.png",
   "vsce": {
