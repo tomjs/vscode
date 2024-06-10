@@ -32,6 +32,14 @@ export interface CLIOptions {
    */
   builtin?: string[];
   /**
+   * A dot-separated identifier for the configuration
+   *
+   * When a section-identifier is provided only that part of the configuration
+   * is returned. Dots in the section-identifier are interpreted as child-access,
+   * like `{ myExt: { setting: { doIt: true }}}` and `getConfiguration('myExt.setting').get('doIt') === true`.
+   */
+  identifier?: string;
+  /**
    * watch files change
    * @default false
    */

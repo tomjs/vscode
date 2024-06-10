@@ -144,15 +144,15 @@ function getDtsType(types: string[]) {
 
 function getCommandDts(pkg: IExtensionManifest, opts: CLIOptions) {
   const commands = pkg?.contributes?.commands || [];
-  const command = getDtsType(commands.map(s => s.command));
-  const builtin = getDtsType([...new Set(opts.builtin || [])]);
-  if (!command && !builtin) {
+  const commandType = getDtsType(commands.map(s => s.command));
+  const builtinType = getDtsType([...new Set(opts.builtin || [])]);
+  if (!commandType && !builtinType) {
     return '';
   }
 
   return /* ts */ `
-  export type BuiltinCommand = ${builtin || 'undefined'};
-  export type UserCommand = ${command || 'undefined'};
+  export type BuiltinCommand = ${builtinType || 'undefined'};
+  export type UserCommand = ${commandType || 'undefined'};
 
   export namespace commands {
 
@@ -195,14 +195,14 @@ function getViewDts(pkg: IExtensionManifest) {
     return acc.concat(ids);
   }, [] as string[]);
 
-  const viewType = getDtsType(viewIds);
-  if (!viewType) {
+  const dtsType = getDtsType(viewIds);
+  if (!dtsType) {
     return '';
   }
 
   return /* ts */ `
   export namespace window {
-    type ViewId = ${viewType};
+    type ViewId = ${dtsType};
 
     export function registerTreeDataProvider<T>(viewId: ViewId, treeDataProvider: TreeDataProvider<T>): Disposable;
     export function createTreeView<T>(viewId: ViewId, options: TreeViewOptions<T>): TreeView<T>;

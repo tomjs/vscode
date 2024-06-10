@@ -33,7 +33,7 @@ cli
   .option('--dts-name [dtsName]', 'Specify the output file name of d.ts', {
     default: 'vscode.d.ts',
   })
-  .option('-b, --builtin [...builtin]', 'Builtin commands')
+  .option('--builtin [...builtin]', 'Builtin commands')
   .option('-w, --watch', 'Watch mode')
   .option('--verbose', 'Display verbose output')
   .action(async (cwd: string, options: CLIOptions) => {
