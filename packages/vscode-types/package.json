@@ -17,9 +17,7 @@
     "node": ">=14"
   },
   "files": [
-    "types",
-    "index.js",
-    "index.mjs"
+    "dist"
   ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
