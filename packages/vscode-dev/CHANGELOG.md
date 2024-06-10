@@ -1,3 +1,8 @@
+## [2.2.1](https://github.com/tomjs/vscode/compare/vscode-dev%402.2.0...vscode-dev%402.2.1) (2024-06-10)
+
+- feat: remote -b short option and other rename [3f9922e](https://github.com/tomjs/vscode/commit/3f9922e)
+- fix: cli options logs use logger.log [86c4f8f](https://github.com/tomjs/vscode/commit/86c4f8f)
+
 ## [2.2.0](https://github.com/tomjs/vscode/compare/vscode-dev%402.1.0...vscode-dev%402.2.0) (2024-06-06)
 
 - feat: add viewIds from contributes.views [c205db2](https://github.com/tomjs/vscode/commit/c205db2)
