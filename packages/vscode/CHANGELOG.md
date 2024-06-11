@@ -1,3 +1,7 @@
+## [2.2.1](https://github.com/tomjs/vscode/compare/vscode%402.2.0...vscode%402.2.1) (2024-06-11)
+
+- fix: Configuration default values use cloneDeep [281ce50](https://github.com/tomjs/vscode/commit/281ce50)
+
 ## [2.2.0](https://github.com/tomjs/vscode/compare/vscode%402.1.0...vscode%402.2.0) (2024-06-10)
 
 - feat: add Configuration class [3e68bf3](https://github.com/tomjs/vscode/commit/3e68bf3)
