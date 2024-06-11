@@ -1,3 +1,8 @@
+## [2.3.0](https://github.com/tomjs/vscode/compare/vscode%402.2.0...vscode%402.3.0) (2024-06-11)
+
+- feat: I18n class add extensionPath and language options [b8cae7c](https://github.com/tomjs/vscode/commit/b8cae7c)
+- fix: Configuration default values use cloneDeep [281ce50](https://github.com/tomjs/vscode/commit/281ce50)
+
 ## [2.2.1](https://github.com/tomjs/vscode/compare/vscode%402.2.0...vscode%402.2.1) (2024-06-11)
 
 - fix: Configuration default values use cloneDeep [281ce50](https://github.com/tomjs/vscode/commit/281ce50)
