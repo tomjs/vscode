@@ -6,21 +6,19 @@ import { getCtx } from './ctx';
 
 const DEFAULT_LANGUAGE = 'en';
 const DEFAULT_NLS = 'package.nls.json';
-let messages: Record<string, string> = {};
 
-export function loadI18n() {
-  const ctx = getCtx();
-  const language = env.language.toLocaleLowerCase();
-  let name = language === DEFAULT_LANGUAGE ? DEFAULT_NLS : `package.nls.${language}.json`;
+export function loadI18n(extensionPath: string, language?: string) {
+  const lang = language ?? env.language.toLocaleLowerCase();
+  let name = lang === DEFAULT_LANGUAGE ? DEFAULT_NLS : `package.nls.${lang}.json`;
 
-  const nlsPath = path.join(ctx.extensionPath, name);
+  const nlsPath = path.join(extensionPath, name);
   if (!fs.existsSync(nlsPath)) {
     name = DEFAULT_NLS;
   }
 
-  messages = Object.assign(
+  return Object.assign(
     {},
-    readJsonSync(path.join(ctx.extensionPath, DEFAULT_NLS)),
+    readJsonSync(path.join(extensionPath, DEFAULT_NLS)),
     readJsonSync(nlsPath),
   );
 }
@@ -69,6 +67,8 @@ export interface NlsI18n {
  * Read i18n messages from package.nls.json
  */
 export class I18n implements NlsI18n {
+  private messages!: Record<string, string>;
+
   t(
     ...params:
       | [message: string, ...args: Array<string | number | boolean>]
@@ -78,9 +78,13 @@ export class I18n implements NlsI18n {
       return '';
     }
 
+    if (this.messages === undefined) {
+      this.messages = loadI18n(getCtx().extensionPath);
+    }
+
     const key = params[0];
     const values = (params[1] as Record<string, any>) ?? {};
-    const text = messages[key] || '';
+    const text = this.messages[key] || '';
     if (Object.keys(values).length === 0) {
       return text;
     }
