@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash.clonedeep';
 import { ConfigurationTarget, workspace } from 'vscode';
 
 export class Configuration<T> {
@@ -34,7 +35,7 @@ export class Configuration<T> {
     Object.keys(cfg)
       .filter(key => typeof cfg[key] !== 'function')
       .forEach(key => {
-        values[key] = cfg.get(key, this._defaultValues[key]);
+        values[key] = cfg.get(key) ?? cloneDeep(this._defaultValues[key]);
       });
     return values;
   }

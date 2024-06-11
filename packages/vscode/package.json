@@ -48,7 +48,11 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@tomjs/node": "^2.1.0"
+    "@tomjs/node": "^2.1.0",
+    "lodash.clonedeep": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/lodash.clonedeep": "^4.5.9"
   },
   "peerDependencies": {
     "@types/vscode": "^1.56.0"
