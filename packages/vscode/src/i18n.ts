@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { readJsonSync } from '@tomjs/node';
 import { env } from 'vscode';
-import { getCtx } from './ctx';
 
 const DEFAULT_LANGUAGE = 'en';
 const DEFAULT_NLS = 'package.nls.json';
@@ -23,7 +22,22 @@ export function loadI18n(extensionPath: string, language?: string) {
   );
 }
 
+/**
+ * Read i18n messages from package.nls.json
+ */
 export interface NlsI18n {
+  /**
+   * Loads the nls messages for the given messages.
+   * @param messages - The messages to use.
+   */
+  use(messages: Record<string, string>): void;
+  /**
+   * Loads the nls messages for the given path and language.
+   * @param extensionPath - The extension path.
+   * @param language - The language to load. Defaults to {@link env.language}.
+   */
+  use(extensionPath: string, language?: string): void;
+
   /**
    * Marks a string for localization. If a localized bundle is available for the language specified by
    * {@link env.language} and the bundle has a localized value for this message, then that localized
@@ -67,7 +81,38 @@ export interface NlsI18n {
  * Read i18n messages from package.nls.json
  */
 export class I18n implements NlsI18n {
-  private messages!: Record<string, string>;
+  private messages: Record<string, string> | undefined;
+
+  /**
+   * Loads the nls messages for the given messages or path.
+   * @param messages - The i18n messages or extension path.
+   * - If a string is passed, it will be used as the extension path.
+   * - If an object is passed, it will be used as the messages.
+   * - If nothing is passed, you can use {@link use} to load the messages later.
+   * @param language - The language to load. Defaults to {@link env.language}.
+   */
+  constructor(messages?: Record<string, string> | string, language?: string) {
+    this.use(messages as any, language);
+  }
+
+  /**
+   * Loads the nls messages for the given messages.
+   * @param messages - The messages to use.
+   */
+  use(messages: Record<string, string>): void;
+  /**
+   * Loads the nls messages for the given path and language.
+   * @param extensionPath - The extension path.
+   * @param language - The language to load. Defaults to {@link env.language}.
+   */
+  use(extensionPath: string, language?: string): void;
+  use(messages: Record<string, string> | string, language?: string) {
+    if (typeof messages === 'string') {
+      this.messages = loadI18n(messages, language);
+    } else if (typeof messages === 'object') {
+      this.messages = messages;
+    }
+  }
 
   t(
     ...params:
@@ -78,12 +123,12 @@ export class I18n implements NlsI18n {
       return '';
     }
 
-    if (this.messages === undefined) {
-      this.messages = loadI18n(getCtx().extensionPath);
-    }
-
     const key = params[0];
     const values = (params[1] as Record<string, any>) ?? {};
+    if (!this.messages) {
+      return key;
+    }
+
     const text = this.messages[key] || '';
     if (Object.keys(values).length === 0) {
       return text;
