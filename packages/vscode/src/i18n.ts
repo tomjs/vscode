@@ -119,20 +119,17 @@ export class I18n implements NlsI18n {
       | [message: string, ...args: Array<string | number | boolean>]
       | [message: string, args: Record<string, any>]
   ) {
-    if (params.length === 0) {
+    if (params.length === 0 || !this.messages) {
       return '';
     }
 
-    const key = params[0];
-    const values = (params[1] as Record<string, any>) ?? {};
-    if (!this.messages) {
-      return key;
-    }
-
-    const text = this.messages[key] || '';
-    if (Object.keys(values).length === 0) {
+    const [key, ...args] = params;
+    const text = this.messages[key] ?? '';
+    if (args[0] === null || args[0] === undefined || args[0] === '') {
       return text;
     }
+
+    const values = typeof args[0] === 'object' ? args[0] : args;
 
     return text.replace(/{([^}]+)}/g, (match, group) => (values[group] ?? match) as string);
   }
