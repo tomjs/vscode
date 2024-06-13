@@ -1,3 +1,7 @@
+## [2.4.1](https://github.com/tomjs/vscode/compare/vscode%402.4.0...vscode%402.4.1) (2024-06-14)
+
+- fix: i18.t method error [0b5ad53](https://github.com/tomjs/vscode/commit/0b5ad53)
+
 ## [2.4.0](https://github.com/tomjs/vscode/compare/vscode%402.3.0...vscode%402.4.0) (2024-06-11)
 
 - feat: add constructor and use method to I18n class [c1927f5](https://github.com/tomjs/vscode/commit/c1927f5)
