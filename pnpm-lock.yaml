@@ -89,11 +89,11 @@ importers:
   packages/vscode-dev:
     dependencies:
       '@tomjs/logger':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.1.2
+        version: 1.1.2
       '@tomjs/node':
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^2.2.1
+        version: 2.2.1
       cac:
         specifier: ^6.7.14
         version: 6.7.14
@@ -552,12 +552,16 @@ packages:
       typescript:
         optional: true
 
-  '@tomjs/logger@1.0.0':
-    resolution: {integrity: sha512-3mf2ODhcBhEgJUx13c+HXsCetgQpspdfORtcGDvhB8GHENcPCpZ3bJ3C+lTtyTBZ49TfD2NAhqTxbCTe41s8LA==}
+  '@tomjs/logger@1.1.2':
+    resolution: {integrity: sha512-M35qpY5lf0rEkVOyUvatpxDhET5ghBDKGB+KgWBddyRaWg+nZDldD04sIwGJjQFjbuVizozkqLnt/LaDTMAYGw==}
     engines: {node: '>=16'}
 
   '@tomjs/node@2.1.0':
     resolution: {integrity: sha512-KPkrq9IN7qjh3ovTlxZeIDo6u/BWer48Z60Wb5qGOE9NCJFVL2+BBuuEhWZtJV94faDKedw08Oo6AJUBHs5WXA==}
+    engines: {node: '>=16'}
+
+  '@tomjs/node@2.2.1':
+    resolution: {integrity: sha512-kkAvIslwJOaW/HwA6T8dC6VXGhHdA+U8DN0iJFZ4wFEIYUptk/qXfIFzUqbJMNTqAyIQ06h09TZhYq63ntWdTQ==}
     engines: {node: '>=16'}
 
   '@tomjs/prettier@1.4.1':
@@ -2930,7 +2934,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  '@tomjs/logger@1.0.0':
+  '@tomjs/logger@1.1.2':
     dependencies:
       chalk: 4.1.2
       dayjs: 1.11.11
@@ -2938,6 +2942,8 @@ snapshots:
       strip-ansi: 6.0.1
 
   '@tomjs/node@2.1.0': {}
+
+  '@tomjs/node@2.2.1': {}
 
   '@tomjs/prettier@1.4.1(prettier@3.3.2)':
     dependencies:
