@@ -14,7 +14,6 @@ export default defineConfig(options => {
       dts: false,
       sourcemap: isDev,
       splitting: true,
-      minify: !isDev,
       external: Object.keys(pkg.dependencies).concat('prettier'),
       env: {
         NODE_ENV: isDev ? 'development' : 'production',

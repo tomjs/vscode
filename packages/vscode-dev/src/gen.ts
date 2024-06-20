@@ -58,7 +58,7 @@ export async function generateCode(opts: CLIOptions) {
   opts.lang = opts.lang ?? 'en';
   opts.dtsName = opts.dtsName ?? 'vscode.d.ts';
 
-  console.debug('gen options', opts);
+  logger.debug('gen options', opts);
 
   if (!opts.watch) {
     await Promise.all([genNls(opts), genPackageDts(opts)]);

@@ -38,7 +38,7 @@ export const formatCode = async (code: string, cwd: string) => {
       );
     }
   } catch (e: any) {
-    console.error(e);
+    logger.error(e);
   }
 
   return code.replace(/^\s+/gm, '').replace(/\n/g, '');

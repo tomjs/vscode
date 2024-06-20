@@ -12,7 +12,7 @@ let pkg: any = {};
 try {
   pkg = readJsonSync(path.join(__dirname, '../package.json')) || {};
 } catch (e) {
-  console.error(e);
+  logger.error(e);
 }
 
 const cli = cac('vscode-dev');
