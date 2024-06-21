@@ -1,3 +1,7 @@
+## [2.2.3](https://github.com/tomjs/vscode/compare/vscode-dev%402.2.2...vscode-dev%402.2.3) (2024-06-21)
+
+- fix: use logger._ instead of console._ [7a8b6b6](https://github.com/tomjs/vscode/commit/7a8b6b6)
+
 ## [2.2.2](https://github.com/tomjs/vscode/compare/vscode-dev%402.2.1...vscode-dev%402.2.2) (2024-06-19)
 
 - chore: update deps [8925327](https://github.com/tomjs/vscode/commit/8925327)
