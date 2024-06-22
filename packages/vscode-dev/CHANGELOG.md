@@ -1,3 +1,7 @@
+## [3.0.2](https://github.com/tomjs/vscode/compare/vscode-dev%403.0.1...vscode-dev%403.0.2) (2024-06-22)
+
+- docs: update readme [279a651](https://github.com/tomjs/vscode/commit/279a651)
+
 ## [3.0.1](https://github.com/tomjs/vscode/compare/vscode-dev%403.0.0...vscode-dev%403.0.1) (2024-06-22)
 
 - docs: update readme [67f4a58](https://github.com/tomjs/vscode/commit/67f4a58)

@@ -1,3 +1,7 @@
+## [2.4.2](https://github.com/tomjs/vscode/compare/vscode%402.4.1...vscode%402.4.2) (2024-06-22)
+
+- docs: update readme [279a651](https://github.com/tomjs/vscode/commit/279a651)
+
 ## [2.4.1](https://github.com/tomjs/vscode/compare/vscode%402.4.0...vscode%402.4.1) (2024-06-14)
 
 - fix: i18.t method error [0b5ad53](https://github.com/tomjs/vscode/commit/0b5ad53)
