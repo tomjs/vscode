@@ -1,3 +1,7 @@
+## [3.0.1](https://github.com/tomjs/vscode/compare/vscode-dev%403.0.0...vscode-dev%403.0.1) (2024-06-22)
+
+- docs: update readme [67f4a58](https://github.com/tomjs/vscode/commit/67f4a58)
+
 ## [3.0.0](https://github.com/tomjs/vscode/compare/vscode-dev%402.2.3...vscode-dev%403.0.0) (2024-06-22)
 
 - feat: Change the configuration file name from vd to vscode [b18d11d](https://github.com/tomjs/vscode/commit/b18d11d)
