@@ -8,8 +8,8 @@
 
 ## 特性
 
-- 根据 `locales` 生成 `package.nls.json`， 支持 [i18n Ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally)
-- 根据 `package.json` 的 `contributes.commands` 等生成 `vscode.d.ts`
+- 基于 `locales` 生成 `package.nls.json` 和 `package.nls.*.json`， 支持 [i18n Ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally)。使用 [@tomjs/vscode](https://github.com/tomjs/vscode/tree/main/packages/vscode) 的 [i18n.t](https://github.com/tomjs/vscode/blob/4f304da89c7ea56ef3e16e1a06841971d3599d78/packages/vscode/src/i18n.ts#L141) 方法支持国际化。
+- 基于 `package.json` 的 `contributes.*` 生成 `vscode.d.ts`，给部分 vscode 方法加强代码提示
 
 ## 安装
 
@@ -108,8 +108,13 @@ declare module 'vscode' {
 }
 ```
 
-### config
+### 配置文件
 
 - `package.json` 文件中的 `vscode` 属性。
 - `.vscoderc.js`、`.vscoderc.ts`、`.vscoderc.mjs` 或 `.vscoderc.cjs` 文件。（要了解有关如何加载 JS 文件的更多信息，请参阅“[加载 JS 模块](https://www.npmjs.com/package/cosmiconfig#h-loading-js-modules)”。）
 - `vscode.config.js`、`vscode.config.ts`、`vscode.config.mjs` 或 `vscode.config.cjs` 文件。（要了解有关如何加载 JS 文件的更多信息，请参阅 “[加载 JS 模块](https://www.npmjs.com/package/cosmiconfig#h-loading-js-modules)”。）
+
+## 关联
+
+- [@tomjs/vscode](https://npmjs.com/package/@tomjs/vscode): 一些实用工具，用于简化 [vscode 扩展](https://marketplace.visualstudio.com/VSCode) 的开发。
+- [@tomjs/vite-plugin-vscode](https://npmjs.com/package/@tomjs/vite-plugin-vscode): 用 `vue`/`react` 来开发 [vscode extension webview](https://code.visualstudio.com/api/references/vscode-api#WebviewPanel) ，支持 `esm` 和 `cjs`。

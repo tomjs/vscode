@@ -8,8 +8,8 @@
 
 ## Features
 
-- Generate `package.nls.json` based on `locales`, support [i18n Ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally)
-- Generate `vscode.d.ts` based on `contributes.commands` etc. in `package.json`
+- Generate `package.nls.json` and `package.nls.*.json` based on `locales`, support [i18n Ally](https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally). Use the [i18n.t](https://github.com/tomjs/vscode/blob/4f304da89c7ea56ef3e16e1a06841971d3599d78/packages/vscode/src/i18n.ts#L141) method of [@tomjs/vscode](https://github.com/tomjs/vscode/blob/4f304da89c7ea56ef3e16e1a06841971d3599d78/packages/vscode/src/i18n.ts#L141) to support internationalization.
+- Generate `vscode.d.ts` based on `contributes.*` of `package.json`, and enhance code prompts for some vscode methods.
 
 ## Install
 
@@ -113,3 +113,8 @@ declare module 'vscode' {
 - A `vscode` property in a `package.json` file.
 - A `.vscoderc.js`, `.vscoderc.ts`, `.vscoderc.mjs`, or `.vscoderc.cjs` file. (To learn more about how JS files are loaded, see "[Loading JS modules](https://www.npmjs.com/package/cosmiconfig#h-loading-js-modules)".)
 - A `vscode.config.js`, `vscode.config.ts`, `vscode.config.mjs`, or `vscode.config.cjs` file. (To learn more about how JS files are loaded, see "[Loading JS modules](https://www.npmjs.com/package/cosmiconfig#h-loading-js-modules)".)
+
+## Related
+
+- [@tomjs/vscode](https://npmjs.com/package/@tomjs/vscode): Some utilities to simplify the development of [VSCode Extensions](https://marketplace.visualstudio.com/VSCode).
+- [@tomjs/vite-plugin-vscode](https://npmjs.com/package/@tomjs/vite-plugin-vscode): Use `vue`/`react` to develop [vscode extension webview](https://code.visualstudio.com/api/references/vscode-api#WebviewPanel), supporting `esm` and `cjs`.

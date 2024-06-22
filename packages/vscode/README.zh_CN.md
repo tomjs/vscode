@@ -4,7 +4,7 @@
 
 [English](./README.md) | **中文**
 
-> 一些实用程序，用于简化 [vscode 扩展](https://marketplace.visualstudio.com/VSCode) 的开发
+> 一些实用工具，用于简化 [vscode 扩展](https://marketplace.visualstudio.com/VSCode) 的开发
 
 ## 特性
 
@@ -26,5 +26,4 @@ npm add @tomjs/vscode
 
 ## 文档
 
-- [paka.dev](https://paka.dev) 提供的 [API文档](https://paka.dev/npm/@tomjs/vscode).
 - [unpkg.com](https://www.unpkg.com/) 提供的 [index.d.ts](https://www.unpkg.com/browse/@tomjs/vscode/dist/index.d.ts).
