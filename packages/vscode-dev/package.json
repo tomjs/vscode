@@ -20,10 +20,7 @@
     "dist"
   ],
   "bin": {
-    "vd": "./dist/cli.js",
-    "vdc": "./dist/cli.js",
-    "vscode-dev": "./dist/cli.js",
-    "vscode-dev-cli": "./dist/cli.js"
+    "vscode-dev": "./dist/cli.js"
   },
   "publishConfig": {
     "access": "public",

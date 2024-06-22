@@ -26,7 +26,7 @@ npm add @tomjs/vscode-dev -D
 
 ## Usage
 
-- CLI
+### CLI
 
 ```bash
 $ vscode-dev --help
@@ -110,3 +110,9 @@ declare module 'vscode' {
   }
 }
 ```
+
+### config
+
+- A `vscode` property in a `package.json` file.
+- A `.vscoderc.js`, `.vscoderc.ts`, `.vscoderc.mjs`, or `.vscoderc.cjs` file. (To learn more about how JS files are loaded, see "[Loading JS modules](https://www.npmjs.com/package/cosmiconfig#h-loading-js-modules)".)
+- A `vscode.config.js`, `vscode.config.ts`, `vscode.config.mjs`, or `vscode.config.cjs` file. (To learn more about how JS files are loaded, see "[Loading JS modules](https://www.npmjs.com/package/cosmiconfig#h-loading-js-modules)".)

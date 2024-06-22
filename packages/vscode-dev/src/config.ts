@@ -3,14 +3,18 @@ import { cosmiconfig } from 'cosmiconfig';
 import type { CLIOptions } from './types';
 
 export async function getConfig(opts: CLIOptions) {
-  const explorer = cosmiconfig('vd', {
+  const explorer = cosmiconfig('vscode', {
     stopDir: opts.cwd,
     searchPlaces: [
       'package.json',
-      'vd.config.json',
-      'vd.config.js',
-      'vd.config.mjs',
-      'vd.config.cjs',
+      '.vscoderc.js',
+      '.vscoderc.ts',
+      '.vscoderc.mjs',
+      '.vscoderc.cjs',
+      'vscode.config.js',
+      'vscode.config.ts',
+      'vscode.config.mjs',
+      'vscode.config.cjs',
     ],
   });
 

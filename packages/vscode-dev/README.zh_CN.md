@@ -109,3 +109,9 @@ declare module 'vscode' {
     command?: BuiltinCommand | UserCommand;
   }
 ```
+
+### config
+
+- `package.json` 文件中的 `vscode` 属性。
+- `.vscoderc.js`、`.vscoderc.ts`、`.vscoderc.mjs` 或 `.vscoderc.cjs` 文件。（要了解有关如何加载 JS 文件的更多信息，请参阅“[加载 JS 模块](https://www.npmjs.com/package/cosmiconfig#h-loading-js-modules)”。）
+- `vscode.config.js`、`vscode.config.ts`、`vscode.config.mjs` 或 `vscode.config.cjs` 文件。（要了解有关如何加载 JS 文件的更多信息，请参阅 “[加载 JS 模块](https://www.npmjs.com/package/cosmiconfig#h-loading-js-modules)”。）
