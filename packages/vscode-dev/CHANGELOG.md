@@ -1,3 +1,7 @@
+## [3.0.0](https://github.com/tomjs/vscode/compare/vscode-dev%402.2.3...vscode-dev%403.0.0) (2024-06-22)
+
+- feat: Change the configuration file name from vd to vscode [b18d11d](https://github.com/tomjs/vscode/commit/b18d11d)
+
 ## [2.2.3](https://github.com/tomjs/vscode/compare/vscode-dev%402.2.2...vscode-dev%402.2.3) (2024-06-21)
 
 - fix: use logger._ instead of console._ [7a8b6b6](https://github.com/tomjs/vscode/commit/7a8b6b6)
