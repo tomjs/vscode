@@ -116,6 +116,12 @@ importers:
 
   packages/vscode-types: {}
 
+  packages/vscode-webview:
+    devDependencies:
+      '@types/vscode-webview':
+        specifier: ^1.57.5
+        version: 1.57.5
+
 packages:
 
   '@babel/code-frame@7.24.6':
@@ -594,6 +600,9 @@ packages:
 
   '@types/node@18.19.34':
     resolution: {integrity: sha512-eXF4pfBNV5DAMKGbI02NnDtWrQ40hAN558/2vvS4gMpMIxaf6JmD7YjnZbq0Q9TDSSkKBamime8ewRoomHdt4g==}
+
+  '@types/vscode-webview@1.57.5':
+    resolution: {integrity: sha512-iBAUYNYkz+uk1kdsq05fEcoh8gJmwT3lqqFPN7MGyjQ3HVloViMdo7ZJ8DFIP8WOK74PjOEilosqAyxV2iUFUw==}
 
   '@types/vscode@1.89.0':
     resolution: {integrity: sha512-TMfGKLSVxfGfoO8JfIE/neZqv7QLwS4nwPwL/NwMvxtAY2230H2I4Z5xx6836pmJvMAzqooRQ4pmLm7RUicP3A==}
@@ -2971,6 +2980,8 @@ snapshots:
   '@types/node@18.19.34':
     dependencies:
       undici-types: 5.26.5
+
+  '@types/vscode-webview@1.57.5': {}
 
   '@types/vscode@1.89.0': {}
 

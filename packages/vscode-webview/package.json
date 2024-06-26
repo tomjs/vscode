@@ -1,0 +1,43 @@
+{
+  "name": "@tomjs/vscode-webview",
+  "version": "0.0.0",
+  "description": "Optimize the postMessage issue between webview page and vscode extension",
+  "engines": {
+    "node": ">=16"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Tom Gao",
+    "email": "tom@tomgao.cc"
+  },
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "default": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+      },
+      "import": {
+        "default": "./dist/index.mjs",
+        "types": "./dist/index.d.mts"
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "@types/vscode-webview": "^1.57.5"
+  }
+}
