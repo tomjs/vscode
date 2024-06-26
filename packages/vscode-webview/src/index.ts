@@ -144,6 +144,28 @@ class VSCodeWebview {
   off(type: string) {
     this.listeners.delete(type);
   }
+
+  /**
+   * Get the persistent state stored for this webview.
+   *
+   * @return The current state or `undefined` if no state has been set.
+   */
+  async getState(): Promise<any> {
+    return this.webviewApi?.getState();
+  }
+
+  /**
+   * Set the persistent state stored for this webview.
+   *
+   * @param newState New persisted state. This must be a JSON serializable object. Can be retrieved
+   * using {@link getState}.
+   *
+   * @return The new state.
+   */
+  setState<T>(state: T) {
+    this.webviewApi?.setState(state);
+    return state;
+  }
 }
 
 /**

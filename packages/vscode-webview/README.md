@@ -54,3 +54,11 @@ Listen for messages
 Cancel listening for messages
 
 - type: message type
+
+### vscodeWebview.getState():Promise<any>
+
+Get the persistent state stored for this webview.
+
+### vscodeWebview.setState(state: any): any
+
+Set the persistent state stored for this webview.

@@ -54,3 +54,11 @@ npm add @tomjs/vscode-webview
 取消监听消息
 
 - type: 消息类型
+
+### vscodeWebview.getState():Promise<any>
+
+获取此 webview 存储的持久状态。
+
+### vscodeWebview.setState(state: any): any
+
+设置此 webview 存储的持久状态。
