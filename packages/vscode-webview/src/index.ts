@@ -45,7 +45,8 @@ class VSCodeWebview {
 
   constructor() {
     if (typeof acquireVsCodeApi !== 'function') {
-      throw new Error('acquireVsCodeApi is not a function');
+      console.error('acquireVsCodeApi is not a function');
+      return;
     }
 
     this.webviewApi = acquireVsCodeApi();
