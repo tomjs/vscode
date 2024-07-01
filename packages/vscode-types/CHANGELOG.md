@@ -1,3 +1,7 @@
+## [1.0.3](https://github.com/tomjs/vscode/compare/vscode-types%401.0.2...vscode-types%401.0.3) (2024-07-01)
+
+- docs: change api doc logo [4ee4708](https://github.com/tomjs/vscode/commit/4ee4708)
+
 ## [1.0.2](https://github.com/tomjs/vscode/compare/vscode-types%401.0.1...vscode-types%401.0.2) (2024-07-01)
 
 - chore: change api document [fa0a47c](https://github.com/tomjs/vscode/commit/fa0a47c)

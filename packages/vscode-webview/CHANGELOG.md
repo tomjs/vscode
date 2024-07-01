@@ -1,3 +1,7 @@
+## [1.0.6](https://github.com/tomjs/vscode/compare/vscode-webview%401.0.5...vscode-webview%401.0.6) (2024-07-01)
+
+- docs: change api doc logo [4ee4708](https://github.com/tomjs/vscode/commit/4ee4708)
+
 ## [1.0.5](https://github.com/tomjs/vscode/compare/vscode-webview%401.0.4...vscode-webview%401.0.5) (2024-07-01)
 
 - chore: change api document [fa0a47c](https://github.com/tomjs/vscode/commit/fa0a47c)

@@ -1,6 +1,6 @@
 {
   "name": "@tomjs/vscode-types",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Some vscode internal d.ts",
   "keywords": [
     "vscode",
