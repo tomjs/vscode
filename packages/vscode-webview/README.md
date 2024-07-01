@@ -1,6 +1,6 @@
 # @tomjs/vscode-webview
 
-[![npm](https://img.shields.io/npm/v/@tomjs/vscode-webview)](https://www.npmjs.com/package/@tomjs/vscode-webview) ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode-webview) ![NPM](https://img.shields.io/npm/l/@tomjs/vscode-webview) [![Docs](https://raw.githubusercontent.com/tomjs/assets/main/npm/api.svg)](https://www.unpkg.com/browse/@tomjs/vscode-webview/dist/index.d.ts)
+[![npm](https://img.shields.io/npm/v/@tomjs/vscode-webview)](https://www.npmjs.com/package/@tomjs/vscode-webview) ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode-webview) ![NPM](https://img.shields.io/npm/l/@tomjs/vscode-webview) [![Docs](https://img.shields.io/badge/API-unpkg-orange)](https://www.unpkg.com/browse/@tomjs/vscode-webview/dist/index.d.ts)
 
 **English** | [中文](./README.zh_CN.md)
 

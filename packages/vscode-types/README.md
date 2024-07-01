@@ -1,6 +1,6 @@
 # @tomjs/vscode-types
 
-[![npm](https://img.shields.io/npm/v/@tomjs/vscode-types)](https://www.npmjs.com/package/@tomjs/vscode-types) ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode-types) ![NPM](https://img.shields.io/npm/l/@tomjs/vscode-types) [![Docs](https://raw.githubusercontent.com/tomjs/assets/main/npm/api.svg)](https://www.unpkg.com/browse/@tomjs/vscode-types/dist/index.d.ts)
+[![npm](https://img.shields.io/npm/v/@tomjs/vscode-types)](https://www.npmjs.com/package/@tomjs/vscode-types) ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode-types) ![NPM](https://img.shields.io/npm/l/@tomjs/vscode-types) [![Docs](https://img.shields.io/badge/API-unpkg-orange)](https://www.unpkg.com/browse/@tomjs/vscode-types/dist/index.d.ts)
 
 **English** | [中文](./README.zh_CN.md)
 
