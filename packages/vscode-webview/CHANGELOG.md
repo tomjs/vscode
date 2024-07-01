@@ -1,3 +1,7 @@
+## [1.0.5](https://github.com/tomjs/vscode/compare/vscode-webview%401.0.4...vscode-webview%401.0.5) (2024-07-01)
+
+- chore: change api document [fa0a47c](https://github.com/tomjs/vscode/commit/fa0a47c)
+
 ## [1.0.4](https://github.com/tomjs/vscode/compare/vscode-webview%401.0.3...vscode-webview%401.0.4) (2024-07-01)
 
 - chore: add keywords [6e083ba](https://github.com/tomjs/vscode/commit/6e083ba)

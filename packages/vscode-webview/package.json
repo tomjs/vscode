@@ -1,6 +1,6 @@
 {
   "name": "@tomjs/vscode-webview",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Optimize the postMessage issue between webview page and vscode extension",
   "engines": {
     "node": ">=16"

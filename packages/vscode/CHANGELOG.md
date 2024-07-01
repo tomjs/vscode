@@ -1,3 +1,7 @@
+## [2.4.3](https://github.com/tomjs/vscode/compare/vscode%402.4.2...vscode%402.4.3) (2024-07-01)
+
+- chore: change api document [fa0a47c](https://github.com/tomjs/vscode/commit/fa0a47c)
+
 ## [2.4.2](https://github.com/tomjs/vscode/compare/vscode%402.4.1...vscode%402.4.2) (2024-06-22)
 
 - docs: update readme [279a651](https://github.com/tomjs/vscode/commit/279a651)
