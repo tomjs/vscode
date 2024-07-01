@@ -5,7 +5,11 @@
   "engines": {
     "node": ">=16"
   },
-  "keywords": [],
+  "keywords": [
+    "vscode",
+    "extension",
+    "webview"
+  ],
   "author": {
     "name": "Tom Gao",
     "email": "tom@tomgao.cc"
