@@ -1,3 +1,7 @@
+## [2.5.0](https://github.com/tomjs/vscode/compare/vscode%402.4.4...vscode%402.5.0) (2024-07-18)
+
+- feat: add isUnderDevelopment method [d1566e5](https://github.com/tomjs/vscode/commit/d1566e5)
+
 ## [2.4.4](https://github.com/tomjs/vscode/compare/vscode%402.4.3...vscode%402.4.4) (2024-07-01)
 
 - docs: change api doc logo [4ee4708](https://github.com/tomjs/vscode/commit/4ee4708)
