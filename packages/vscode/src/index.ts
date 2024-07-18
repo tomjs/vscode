@@ -5,6 +5,7 @@ import { i18n } from './i18n';
 export * from './configuration';
 export * from './constants';
 export * from './ctx';
+export * from './env';
 export * from './i18n';
 export * from './user';
 export * from './workspace';

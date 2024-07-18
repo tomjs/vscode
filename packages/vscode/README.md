@@ -1,6 +1,6 @@
 # @tomjs/vscode
 
-[![npm](https://img.shields.io/npm/v/@tomjs/vscode)](https://www.npmjs.com/package/@tomjs/vscode) ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode) ![NPM](https://img.shields.io/npm/l/@tomjs/vscode) [![Docs](https://img.shields.io/badge/API-unpkg-orange)](https://www.unpkg.com/browse/@tomjs/vscode/dist/index.d.ts)
+[![npm](https://img.shields.io/npm/v/@tomjs/vscode)](https://www.npmjs.com/package/@tomjs/vscode) ![node-current (scoped)](https://img.shields.io/node/v/@tomjs/vscode) ![NPM](https://img.shields.io/npm/l/@tomjs/vscode) [![jsDocs.io](https://img.shields.io/badge/jsDocs.io-reference-blue)](https://www.jsdocs.io/package/@tomjs/vscode)
 
 **English** | [中文](./README.zh_CN.md)
 
@@ -26,4 +26,5 @@ npm add @tomjs/vscode
 
 ## Documentation
 
+- [API Document](https://www.jsdocs.io/package/@tomjs/vscode) provided by [jsdocs.io](https://www.jsdocs.io).
 - [index.d.ts](https://www.unpkg.com/browse/@tomjs/vscode/dist/index.d.ts) provided by [unpkg.com](https://www.unpkg.com).
