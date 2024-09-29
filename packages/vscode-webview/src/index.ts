@@ -35,7 +35,7 @@ export type PostMessageListener<T> = (data: T) => void | Promise<void>;
  * The vscode api for post message
  */
 class VSCodeWebview {
-  private readonly webviewApi: WebviewApi<unknown> | undefined;
+  private readonly webviewApi: WebviewApi<any> | undefined;
   private _options: PostMessageOptions = {
     interval: INTERVAL,
     timeout: TIMEOUT,
@@ -138,10 +138,19 @@ class VSCodeWebview {
     });
   }
 
+  /**
+   * Register a listener for a message type
+   * @param type the message type
+   * @param listener the listener
+   */
   on<T>(type: string, listener: PostMessageListener<T>) {
     this.listeners.set(type, listener);
   }
 
+  /**
+   * Remove a listener for a message type
+   * @param type the message type
+   */
   off(type: string) {
     this.listeners.delete(type);
   }
@@ -151,7 +160,7 @@ class VSCodeWebview {
    *
    * @return The current state or `undefined` if no state has been set.
    */
-  async getState(): Promise<any> {
+  async getState<T = any>(): Promise<T> {
     return this.webviewApi?.getState();
   }
 
@@ -170,6 +179,11 @@ class VSCodeWebview {
 }
 
 /**
- * the vscode webview api
+ * The vscode webview api
  */
 export const vscodeWebview = new VSCodeWebview();
+
+/**
+ * The vscode webview api
+ */
+export const webviewApi = vscodeWebview;
