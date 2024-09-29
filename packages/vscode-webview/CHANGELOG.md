@@ -1,3 +1,7 @@
+## [1.1.0](https://github.com/tomjs/vscode/compare/vscode-webview%401.0.6...vscode-webview%401.1.0) (2024-09-29)
+
+- feat: add webviewApi export [1f09225](https://github.com/tomjs/vscode/commit/1f09225)
+
 ## [1.0.6](https://github.com/tomjs/vscode/compare/vscode-webview%401.0.5...vscode-webview%401.0.6) (2024-07-01)
 
 - docs: change api doc logo [4ee4708](https://github.com/tomjs/vscode/commit/4ee4708)
