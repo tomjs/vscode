@@ -1,3 +1,7 @@
+## [2.0.0](https://github.com/tomjs/vscode/compare/vscode-webview%401.1.0...vscode-webview%402.0.0) (2024-10-08)
+
+- feat: export wrapper class and remove instances [0d4fc90](https://github.com/tomjs/vscode/commit/0d4fc90)
+
 ## [1.1.0](https://github.com/tomjs/vscode/compare/vscode-webview%401.0.6...vscode-webview%401.1.0) (2024-09-29)
 
 - feat: add webviewApi export [1f09225](https://github.com/tomjs/vscode/commit/1f09225)
