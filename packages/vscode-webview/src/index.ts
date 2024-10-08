@@ -1,6 +1,8 @@
-import type { WebviewApi } from 'vscode-webview';
+import type { WebviewApi as VsCodeWebviewApi } from 'vscode-webview';
 
-export interface PostMessageOptions {
+export type PostMessageOptions = PostMessageAsyncOptions & PostMessageDataOptions;
+
+export interface PostMessageAsyncOptions {
   /**
    * the millisecond of try interval time
    * @default 200
@@ -11,6 +13,9 @@ export interface PostMessageOptions {
    * @default 10000
    */
   timeout?: number;
+}
+
+export interface PostMessageDataOptions {
   /**
    *  the name of key in the message, default 'type'
    */
@@ -23,42 +28,49 @@ export interface PostMessageOptions {
 
 const INTERVAL = 200;
 const TIMEOUT = 10000;
+const TYPE_KEY = 'type';
+const DATA_KEY = 'data';
 
 const globalPostMessageOptions: PostMessageOptions = {
   interval: INTERVAL,
   timeout: TIMEOUT,
+  typeKey: TYPE_KEY,
+  dataKey: DATA_KEY,
 };
+
+function isNil(v: any) {
+  return typeof v === 'undefined' || v === null;
+}
 
 export type PostMessageListener<T> = (data: T) => void | Promise<void>;
 
 /**
- * The vscode api for post message
+ * A utility wrapper around the acquireVsCodeApi() function, which enables
+ * message passing and state management between the webview and extension
+ * contexts.
  */
-class VSCodeWebview {
-  private readonly webviewApi: WebviewApi<any> | undefined;
+export class WebviewApi<StateType = any> {
+  private readonly webviewApi!: VsCodeWebviewApi<StateType>;
   private _options: PostMessageOptions = {
     interval: INTERVAL,
     timeout: TIMEOUT,
   };
 
-  private listeners: Map<string, PostMessageListener<any>> = new Map();
+  private listeners: Map<string | number, PostMessageListener<any>[]> = new Map();
 
-  constructor() {
+  constructor(options?: PostMessageOptions) {
     if (typeof acquireVsCodeApi !== 'function') {
       console.error('acquireVsCodeApi is not a function');
       return;
     }
 
+    this.setOptions(options || {});
     this.webviewApi = acquireVsCodeApi();
+
     window.addEventListener('message', event => {
       const message = event.data || {};
-      if (this.listeners.size === 0) {
-        return;
-      }
-      const listener = this.listeners.get(message.type);
-      if (listener) {
-        listener(message.data);
-      }
+      const { typeKey, dataKey } = this._options;
+      this._runListener(message[typeKey ?? TYPE_KEY], message[dataKey ?? DATA_KEY]);
     });
   }
 
@@ -67,14 +79,33 @@ class VSCodeWebview {
    * @param options
    */
   public setOptions(options: PostMessageOptions) {
-    this._options = Object.assign({}, this._options, options);
+    this._options = Object.assign({}, globalPostMessageOptions, this._options, options);
   }
 
-  private _postMessage(type: string | number, data: any, opts: PostMessageOptions) {
+  private _postMessage(type: string | number, data: any, options: PostMessageOptions) {
     if (!this.webviewApi) {
       return;
     }
-    this.webviewApi.postMessage({ [opts.typeKey ?? 'type']: type, [opts.typeKey ?? 'data']: data });
+
+    this.webviewApi.postMessage({
+      [options.typeKey ?? TYPE_KEY]: type,
+      [options.dataKey ?? DATA_KEY]: data,
+    });
+  }
+
+  private _runListener(type: string | number, result: any, error?: any) {
+    if (isNil(type) || this.listeners.size === 0) {
+      return;
+    }
+    const listeners = this.listeners.get(type);
+    if (listeners) {
+      if (!isNil(result)) {
+        listeners[0] && listeners[0](result);
+      }
+      if (!isNil(error)) {
+        listeners[1] && listeners[1](error);
+      }
+    }
   }
 
   /**
@@ -84,9 +115,8 @@ class VSCodeWebview {
    * @param options
    */
 
-  public postMessage(type: string | number, data: any, options?: PostMessageOptions) {
-    const opts = Object.assign({}, globalPostMessageOptions, options);
-    this._postMessage(type, data, opts);
+  public post(type: string | number, data: any) {
+    this._postMessage(type, data, this._options);
   }
 
   /**
@@ -96,10 +126,10 @@ class VSCodeWebview {
    * @param options
    * @returns
    */
-  public postAndReceiveMessage<T>(
+  public postAndReceive<T>(
     type: string | number,
     data: any,
-    options?: PostMessageOptions,
+    options?: PostMessageAsyncOptions,
   ): Promise<T> {
     return new Promise((resolve, reject) => {
       if (!this.webviewApi) {
@@ -107,7 +137,7 @@ class VSCodeWebview {
         return;
       }
 
-      const opts = Object.assign({}, globalPostMessageOptions, options);
+      const opts = Object.assign({}, this._options, options);
       const post = () => {
         this._postMessage(type, data, opts);
       };
@@ -117,12 +147,18 @@ class VSCodeWebview {
       const timeoutId = setTimeout(() => {
         window.removeEventListener('message', receive);
         clearInterval(intervalId);
+
+        this._runListener(type, undefined, new Error('Timeout'));
+
         reject(new Error('Timeout'));
       }, opts.timeout ?? TIMEOUT);
 
       const receive = (e: MessageEvent<any>) => {
-        console.log(e);
-        if (!e.origin.startsWith('vscode-webview://') || e.data?.type !== type) {
+        if (
+          !e.origin.startsWith('vscode-webview://') ||
+          !e.data ||
+          e.data[opts.typeKey ?? TYPE_KEY] !== type
+        ) {
           return;
         }
 
@@ -130,7 +166,9 @@ class VSCodeWebview {
         clearTimeout(timeoutId);
         clearInterval(intervalId);
 
-        resolve(e.data?.data);
+        const res = e.data[opts.dataKey ?? DATA_KEY];
+        this._runListener(type, res);
+        resolve(res);
       };
 
       window.addEventListener('message', receive);
@@ -141,18 +179,27 @@ class VSCodeWebview {
   /**
    * Register a listener for a message type
    * @param type the message type
-   * @param listener the listener
+   * @param success the success listener
+   * @param fail the fail listener
    */
-  on<T>(type: string, listener: PostMessageListener<T>) {
-    this.listeners.set(type, listener);
+  on<T>(type: string | number, success: PostMessageListener<T>, fail?: PostMessageListener<any>) {
+    this.listeners.set(type, fail ? [success, fail] : [success]);
   }
 
   /**
    * Remove a listener for a message type
    * @param type the message type
    */
-  off(type: string) {
+  off(type: string | number) {
     this.listeners.delete(type);
+  }
+
+  /**
+   * Post a message to the owner of the webview
+   * @param message the message content
+   */
+  postMessage<T = any>(message: T) {
+    this.webviewApi.postMessage(message);
   }
 
   /**
@@ -160,8 +207,8 @@ class VSCodeWebview {
    *
    * @return The current state or `undefined` if no state has been set.
    */
-  async getState<T = any>(): Promise<T> {
-    return this.webviewApi?.getState();
+  getState(): StateType | undefined {
+    return this.webviewApi.getState();
   }
 
   /**
@@ -172,18 +219,8 @@ class VSCodeWebview {
    *
    * @return The new state.
    */
-  setState<T>(state: T) {
-    this.webviewApi?.setState(state);
-    return state;
+  setState<T extends StateType | undefined>(newState: T): T {
+    this.webviewApi.setState(newState);
+    return newState;
   }
 }
-
-/**
- * The vscode webview api
- */
-export const vscodeWebview = new VSCodeWebview();
-
-/**
- * The vscode webview api
- */
-export const webviewApi = vscodeWebview;
