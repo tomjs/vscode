@@ -1,3 +1,7 @@
+## [2.0.1](https://github.com/tomjs/vscode/compare/vscode-webview%402.0.0...vscode-webview%402.0.1) (2024-10-08)
+
+- docs: optimize documents [c8d2954](https://github.com/tomjs/vscode/commit/c8d2954)
+
 ## [2.0.0](https://github.com/tomjs/vscode/compare/vscode-webview%401.1.0...vscode-webview%402.0.0) (2024-10-08)
 
 - feat: export wrapper class and remove instances [0d4fc90](https://github.com/tomjs/vscode/commit/0d4fc90)
