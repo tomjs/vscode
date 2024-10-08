@@ -28,19 +28,21 @@ npm add @tomjs/vscode-webview
 
 ## 使用
 
-### vscodeWebview.getState(): any
+### WebviewApi
+
+#### getState(): any
 
 获取此 webview 存储的持久状态。
 
-### vscodeWebview.setState(state: any): any
+#### setState(state: any): any
 
 设置此 webview 存储的持久状态。
 
-### vscodeWebview.postMessage(message:any)
+#### postMessage(message:any)
 
 向 WebView 的所有者发布消息
 
-### vscodeWebview.post(type, message, options)
+#### post(type, message, options)
 
 发送消息
 
@@ -48,7 +50,7 @@ npm add @tomjs/vscode-webview
 - message: 消息内容
 - options: 配置项
 
-### vscodeWebview.postAndReceive(type, message, options): Promise<any>
+#### postAndReceive(type, message, options): Promise<any>
 
 发送并接收消息
 
@@ -56,7 +58,7 @@ npm add @tomjs/vscode-webview
 - message: 消息内容
 - options: 配置项
 
-### vscodeWebview.on(type, success[, fail])
+#### on(type, success[, fail])
 
 监听消息
 
@@ -64,7 +66,7 @@ npm add @tomjs/vscode-webview
 - success: 监听成功回调函数
 - fail: 监听失败回调函数
 
-### vscodeWebview.off(type)
+#### off(type)
 
 取消监听消息
 
@@ -76,7 +78,7 @@ npm add @tomjs/vscode-webview
 
 **破坏性更新：**
 
-- 导出 `WebviewApi` 的封装 `WebviewApiWrapper` 类
-  - `postMessage` 方法修改为与 `WebviewApi` 实例的方法一致
+- 导出由官方 [@types/vscode-webview](https://www.npmjs.com/package/@types/vscode-webview) 的`WebviewApi` 来封装的 `WebviewApi` 类
+  - `postMessage` 方法修改为与官方的 `WebviewApi` 实例的方法一致
   - 原 `postMessage` 和 `postAndReceiveMessage` 方法名改为 `post` 和 `postAndReceive`
-- 删除 `WebviewApiWrapper` 的实例：`vscodeWebview` 和 `webviewApi`，需要手动引入并实例化
+- 删除 `WebviewApi` 的实例：`vscodeWebview` 和 `webviewApi`，需要手动引入并实例化

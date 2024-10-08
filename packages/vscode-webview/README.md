@@ -28,19 +28,21 @@ npm add @tomjs/vscode-webview
 
 ## Usage
 
-### vscodeWebview.getState()
+### WebviewApi
+
+#### getState()
 
 Get the persistent state stored for this webview.
 
-### vscodeWebview.setState(state)
+#### setState(state)
 
 Set the persistent state stored for this webview.
 
-### vscodeWebview.postMessage(message)
+#### postMessage(message)
 
 Post a message to the owner of the webview
 
-### vscodeWebview.post(type, message, options)
+#### post(type, message, options)
 
 Send message
 
@@ -48,7 +50,7 @@ Send message
 - message: message content
 - options: configuration items
 
-### vscodeWebview.postAndReceive(type, message, options): Promise<any>
+#### postAndReceive(type, message, options): Promise<any>
 
 Send and receive messages
 
@@ -56,7 +58,7 @@ Send and receive messages
 - message: message content
 - options: configuration items
 
-### vscodeWebview.on(type, success[, fail])
+#### on(type, success[, fail])
 
 Listen for messages
 
@@ -64,7 +66,7 @@ Listen for messages
 - success: listener success callback function
 - fail: listener error callback function
 
-### vscodeWebview.off(type)
+#### off(type)
 
 Cancel listening for messages
 
@@ -76,7 +78,7 @@ Cancel listening for messages
 
 **Breaking Updates:**
 
-- Export the `WebviewApiWrapper` class that wraps `WebviewApi`
-  - Modify the `postMessage` method to be consistent with the method of the `WebviewApi` instance
-  - Change the original `postMessage` and `postAndReceiveMessage` method names to `post` and `postAndReceive`
-- Delete the `WebviewApiWrapper` instances: `vscodeWebview` and `webviewApi`, which need to be manually introduced and instantiated
+- Export the `WebviewApi` class wrapped by the `WebviewApi` of the official [@types/vscode-webview](https://www.npmjs.com/package/@types/vscode-webview)
+  - The `postMessage` method is modified to be consistent with the method of the official `WebviewApi` instance
+  - The original `postMessage` and `postAndReceiveMessage` method names are changed to `post` and `postAndReceive`
+- Delete the `WebviewApi` instances: `vscodeWebview` and `webviewApi`, which need to be manually imported and instantiated
