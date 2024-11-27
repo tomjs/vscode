@@ -82,7 +82,7 @@ export class WebviewApi<StateType = any> {
     this._options = Object.assign({}, globalPostMessageOptions, this._options, options);
   }
 
-  private _postMessage(type: string | number, data: any, options: PostMessageOptions) {
+  private _postMessage(type: string | number, data: any | undefined, options: PostMessageOptions) {
     if (!this.webviewApi) {
       return;
     }
@@ -115,7 +115,7 @@ export class WebviewApi<StateType = any> {
    * @param options
    */
 
-  public post(type: string | number, data: any) {
+  public post(type: string | number, data: any | undefined) {
     this._postMessage(type, data, this._options);
   }
 
@@ -128,7 +128,7 @@ export class WebviewApi<StateType = any> {
    */
   public postAndReceive<T>(
     type: string | number,
-    data: any,
+    data: any | undefined,
     options?: PostMessageAsyncOptions,
   ): Promise<T> {
     return new Promise((resolve, reject) => {
