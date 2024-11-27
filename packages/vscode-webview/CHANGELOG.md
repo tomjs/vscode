@@ -1,3 +1,7 @@
+## [2.0.2](https://github.com/tomjs/vscode/compare/vscode-webview%402.0.1...vscode-webview%402.0.2) (2024-11-27)
+
+- feat: support undefined type to some methods [3dc3525](https://github.com/tomjs/vscode/commit/3dc3525)
+
 ## [2.0.1](https://github.com/tomjs/vscode/compare/vscode-webview%402.0.0...vscode-webview%402.0.1) (2024-10-08)
 
 - docs: optimize documents [c8d2954](https://github.com/tomjs/vscode/commit/c8d2954)
