@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Logger from '@tomjs/logger';
+import { mkdirpSync } from '@tomjs/node';
+import type { CLIOptions } from './types';
 
 export const logger = new Logger({ directory: 'vscode-dev/logs' });
 
@@ -44,12 +46,7 @@ export const formatCode = async (code: string, cwd: string) => {
   return code.replace(/^\s+/gm, '').replace(/\n/g, '');
 };
 
-/**
- * Get dts output path
- * @param cwd
- * @returns
- */
-export function getDtsOutputPath(cwd: string) {
+function getDtsDir(cwd: string) {
   const folders = ['types', 'extension', 'src'];
   for (const folder of folders) {
     const dir = path.join(cwd, folder);
@@ -58,4 +55,12 @@ export function getDtsOutputPath(cwd: string) {
     }
   }
   return cwd;
+}
+
+export function getDtsOutputPath(opts: CLIOptions) {
+  const filePath = opts.dtsDir ? path.join(opts.cwd!, opts.dtsDir) : getDtsDir(opts.cwd!);
+  if (!fs.existsSync(filePath)) {
+    mkdirpSync(filePath);
+  }
+  return path.join(filePath, opts.dtsName || 'vscode.d.ts');
 }

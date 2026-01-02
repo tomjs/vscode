@@ -24,7 +24,7 @@ export interface CLIOptions {
    */
   dtsDir?: string;
   /**
-   * generate d.ts file name, default is "vscode-i18n.d.ts"
+   * generate d.ts file name, default is "vscode.d.ts"
    */
   dtsName?: string;
   /**
