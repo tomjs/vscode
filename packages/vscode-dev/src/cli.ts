@@ -1,17 +1,18 @@
 #!/usr/bin/env node
+import type { CLIOptions } from './types';
 import path from 'node:path';
 import { readJsonSync } from '@tomjs/node';
 import cac from 'cac';
 import { getConfig } from './config';
 import { generateCode } from './gen';
-import type { CLIOptions } from './types';
 import { logger } from './utils';
 
 let pkg: any = {};
 
 try {
   pkg = readJsonSync(path.join(__dirname, '../package.json')) || {};
-} catch (e) {
+}
+catch (e) {
   logger.error(e);
 }
 

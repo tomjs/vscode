@@ -30,13 +30,7 @@ export interface NlsI18n {
    * Loads the nls messages for the given messages.
    * @param messages - The messages to use.
    */
-  use(messages: Record<string, string>): void;
-  /**
-   * Loads the nls messages for the given path and language.
-   * @param extensionPath - The extension path.
-   * @param language - The language to load. Defaults to {@link env.language}.
-   */
-  use(extensionPath: string, language?: string): void;
+  use: ((messages: Record<string, string>) => void) & ((extensionPath: string, language?: string) => void);
 
   /**
    * Marks a string for localization. If a localized bundle is available for the language specified by
@@ -52,29 +46,11 @@ export interface NlsI18n {
    * @example
    * i18n.t('Hello {0}!', 'World');
    */
-  t(message: string, ...args: Array<string | number | boolean>): string;
-
-  /**
-   * Marks a string for localization. If a localized bundle is available for the language specified by
-   * {@link env.language} and the bundle has a localized value for this message, then that localized
-   * value will be returned (with injected {@link args} values for any templated values).
-   *
-   * @param message The message to localize. Supports named templating where strings like `{foo}` and `{bar}` are
-   * replaced by the value in the Record for that key (foo, bar, etc).
-   * @param args The arguments to be used in the localized string. The name of the key in the record is used to
-   * match the template placeholder in the localized string.
-   * @returns localized string with injected arguments.
-   *
-   * @example
-   * i18n.t('Hello {name}!', { name: 'World' });
-   */
-  t(message: string, args: Record<string, any>): string;
-
-  t(
+  t: ((message: string, ...args: Array<string | number | boolean>) => string) & ((message: string, args: Record<string, any>) => string) & ((
     ...params:
       | [message: string, ...args: Array<string | number | boolean>]
       | [message: string, args: Record<string, any>]
-  ): string;
+  ) => string);
 }
 
 /**
@@ -109,7 +85,8 @@ export class I18n implements NlsI18n {
   use(messages: Record<string, string> | string, language?: string) {
     if (typeof messages === 'string') {
       this.messages = loadI18n(messages, language);
-    } else if (typeof messages === 'object') {
+    }
+    else if (typeof messages === 'object') {
       this.messages = messages;
     }
   }
@@ -131,7 +108,7 @@ export class I18n implements NlsI18n {
 
     const values = typeof args[0] === 'object' ? args[0] : args;
 
-    return text.replace(/{([^}]+)}/g, (match, group) => (values[group] ?? match) as string);
+    return text.replace(/\{([^}]+)\}/g, (match, group) => (values[group] ?? match) as string);
   }
 }
 

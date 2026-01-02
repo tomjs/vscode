@@ -34,7 +34,7 @@ export class Configuration<T> {
     const cfg = this.configuration();
     Object.keys(cfg)
       .filter(key => typeof cfg[key] !== 'function')
-      .forEach(key => {
+      .forEach((key) => {
         values[key] = cfg.get(key) ?? cloneDeep(this._defaultValues[key]);
       });
     return values;
@@ -45,10 +45,10 @@ export class Configuration<T> {
    * @param section Configuration name, supports dotted names.
    * @param value  The new value.
    * @param target The {@link ConfigurationTarget configuration target} or a boolean value. Defaults to `true`
-   *	- If `true` updates {@link ConfigurationTarget.Global Global settings}.
-   *	- If `false` updates {@link ConfigurationTarget.Workspace Workspace settings}.
-   *	- If `undefined` or `null` updates to {@link ConfigurationTarget.WorkspaceFolder Workspace folder settings} if configuration is resource specific,
-   * 	otherwise to {@link ConfigurationTarget.Workspace Workspace settings}.
+   *  - If `true` updates {@link ConfigurationTarget.Global Global settings}.
+   *  - If `false` updates {@link ConfigurationTarget.Workspace Workspace settings}.
+   *  - If `undefined` or `null` updates to {@link ConfigurationTarget.WorkspaceFolder Workspace folder settings} if configuration is resource specific,
+   *  otherwise to {@link ConfigurationTarget.Workspace Workspace settings}.
    */
   async update(
     section: string,
@@ -60,10 +60,10 @@ export class Configuration<T> {
    * Update configuration values. The updated configuration values are persisted.
    * @param values Configuration names and values, supports dotted names.
    * @param target The {@link ConfigurationTarget configuration target} or a boolean value. Defaults to `true`
-   *	- If `true` updates {@link ConfigurationTarget.Global Global settings}.
-   *	- If `false` updates {@link ConfigurationTarget.Workspace Workspace settings}.
-   *	- If `undefined` or `null` updates to {@link ConfigurationTarget.WorkspaceFolder Workspace folder settings} if configuration is resource specific,
-   * 	otherwise to {@link ConfigurationTarget.Workspace Workspace settings}.
+   *  - If `true` updates {@link ConfigurationTarget.Global Global settings}.
+   *  - If `false` updates {@link ConfigurationTarget.Workspace Workspace settings}.
+   *  - If `undefined` or `null` updates to {@link ConfigurationTarget.WorkspaceFolder Workspace folder settings} if configuration is resource specific,
+   *   otherwise to {@link ConfigurationTarget.Workspace Workspace settings}.
    */
   async update(values: T, target?: ConfigurationTarget | boolean | null): Promise<void>;
   async update(section: string | T, value: any, target?: ConfigurationTarget | boolean | null) {
@@ -72,11 +72,13 @@ export class Configuration<T> {
     if (typeof section === 'string') {
       values[section] = value;
       _target = target;
-    } else if (typeof section === 'object') {
+    }
+    else if (typeof section === 'object') {
       Object.assign(values, section);
       _target = value;
-    } else {
-      throw new Error('');
+    }
+    else {
+      throw new TypeError('error: section must be string or object');
     }
 
     const cfg = this.configuration();

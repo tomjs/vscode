@@ -1,12 +1,12 @@
+import type { IExtensionManifest } from '@tomjs/vscode-types';
+import type { CLIOptions } from './types';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { cwd } from 'node:process';
 import { readJson, readJsonSync, writeFile, writeJson } from '@tomjs/node';
-import type { IExtensionManifest } from '@tomjs/vscode-types';
 import chalk from 'chalk';
 import chokidar from 'chokidar';
-import type { CLIOptions } from './types';
 import { formatCode, getDtsOutputPath, logger } from './utils';
 
 const ROOT = cwd();
@@ -27,7 +27,7 @@ function createWatcher(paths: string | string[], callback: () => Promise<any>) {
 
   let ready = false;
 
-  watcher.on('ready', async function () {
+  watcher.on('ready', async () => {
     ready = true;
 
     logger.info(`watching: ${watchPaths.map(s => chalk.green(s))}`);
@@ -43,7 +43,8 @@ function createWatcher(paths: string | string[], callback: () => Promise<any>) {
 
     try {
       await callback();
-    } catch (e: any) {
+    }
+    catch (e: any) {
       logger.error(e?.message);
     }
   });
@@ -81,17 +82,17 @@ async function genNls(opts: CLIOptions) {
   const nslKeys: string[] = [];
 
   await Promise.all(
-    files.map(async name => {
+    files.map(async (name) => {
       const locale = name.substring(0, name.length - 5);
       const messages = Object.assign({}, await readJson(path.join(localePath, name)));
-      Object.keys(defaultLocale).forEach(key => {
+      Object.keys(defaultLocale).forEach((key) => {
         messages[key] = messages[key] || defaultLocale[key];
       });
 
       nslKeys.push(...Object.keys(messages));
 
-      const fileName =
-        locale === opts.lang ? './package.nls.json' : `./package.nls.${locale.toLowerCase()}.json`;
+      const fileName
+        = locale === opts.lang ? './package.nls.json' : `./package.nls.${locale.toLowerCase()}.json`;
       await writeJson(path.join(opts.cwd!, fileName), messages);
     }),
   );
@@ -205,8 +206,8 @@ function getViewDts(pkg: IExtensionManifest) {
     export function registerWebviewViewProvider(viewId: ViewId, provider: WebviewViewProvider, options?: {
       readonly webviewOptions?: {
         readonly retainContextWhenHidden?: boolean;
-			};
-		}): Disposable;
+      };
+    }): Disposable;
   }
   `;
 }
@@ -215,7 +216,8 @@ async function genPackageDts(opts: CLIOptions) {
   let pkg = {} as IExtensionManifest;
   try {
     pkg = (await readJson(path.join(opts.cwd!, 'package.json'))) || {};
-  } catch (e: any) {
+  }
+  catch (e: any) {
     logger.error(e?.message);
   }
 

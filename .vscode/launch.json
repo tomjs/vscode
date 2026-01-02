@@ -10,7 +10,8 @@
       "type": "extensionHost",
       "request": "launch",
       "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/examples/vscode-i18n"
+        "--disable-extensions",
+        "--extensionDevelopmentPath=${workspaceFolder}"
       ],
       "outFiles": [
         "${workspaceFolder}/examples/vscode-i18n/dist/*.js"
@@ -31,6 +32,6 @@
         "${workspaceFolder}/examples/vscode-i18n"
       ],
       "preLaunchTask": "cli:dev"
-    },
+    }
   ]
 }

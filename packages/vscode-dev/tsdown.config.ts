@@ -1,7 +1,7 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from 'tsdown';
 import pkg from './package.json';
 
-export default defineConfig(options => {
+export default defineConfig((options) => {
   const isDev = !!options.watch;
 
   return [
@@ -13,7 +13,8 @@ export default defineConfig(options => {
       clean: true,
       dts: false,
       sourcemap: isDev,
-      splitting: true,
+      publint: true,
+      fixedExtension: false,
       external: Object.keys(pkg.dependencies).concat('prettier'),
       env: {
         NODE_ENV: isDev ? 'development' : 'production',

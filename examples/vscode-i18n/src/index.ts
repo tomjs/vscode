@@ -1,3 +1,4 @@
+import type { ExtensionContext } from 'vscode';
 import {
   Configuration,
   getDotVSCodePath,
@@ -5,7 +6,6 @@ import {
   i18n,
   initExtension,
 } from '@tomjs/vscode';
-import type { ExtensionContext } from 'vscode';
 import { commands, window } from 'vscode';
 
 interface IConfig {

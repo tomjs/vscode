@@ -9,7 +9,8 @@ export function getActiveWorkspaceFolder() {
   const editor = window.activeTextEditor;
   if (editor) {
     activeWorkspace = workspace.getWorkspaceFolder(editor.document.uri);
-  } else {
+  }
+  else {
     if (workspace.workspaceFolders && workspace.workspaceFolders.length > 0) {
       activeWorkspace = workspace.workspaceFolders[0];
     }

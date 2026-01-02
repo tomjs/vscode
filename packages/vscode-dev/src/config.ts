@@ -1,6 +1,6 @@
+import type { CLIOptions } from './types';
 import fs from 'node:fs';
 import { cosmiconfig } from 'cosmiconfig';
-import type { CLIOptions } from './types';
 
 export async function getConfig(opts: CLIOptions) {
   const explorer = cosmiconfig('vscode', {

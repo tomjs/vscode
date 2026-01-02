@@ -1,51 +1,55 @@
 {
   "name": "@tomjs/vscode",
+  "type": "commonjs",
   "version": "2.5.0",
   "description": "Some utilities to simplify the development of VSCode Extensions",
+  "author": {
+    "name": "Tom Gao",
+    "email": "tom@tomgao.cc"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomjs/vscode.git"
+  },
   "keywords": [
     "vscode",
     "extension",
     "utils",
     "utilities"
   ],
-  "author": {
-    "name": "Tom Gao",
-    "email": "tom@tomgao.cc"
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">=16"
-  },
-  "files": [
-    "dist"
-  ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": {
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
-      },
-      "import": {
-        "default": "./dist/index.mjs",
-        "types": "./dist/index.d.mts"
-      }
-    }
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tomjs/vscode.git"
-  },
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup && prettier --write ./dist",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
     "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "@types/vscode": "^1.56.0"
   },
   "dependencies": {
     "@tomjs/node": "^2.1.0",
@@ -53,8 +57,5 @@
   },
   "devDependencies": {
     "@types/lodash.clonedeep": "^4.5.9"
-  },
-  "peerDependencies": {
-    "@types/vscode": "^1.56.0"
   }
 }

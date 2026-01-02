@@ -115,11 +115,11 @@ export interface IWalkthroughStep {
   readonly description: string | undefined;
   readonly media:
     | {
-        image: string | { dark: string; light: string; hc: string };
-        altText: string;
-        markdown?: never;
-        svg?: never;
-      }
+      image: string | { dark: string; light: string; hc: string };
+      altText: string;
+      markdown?: never;
+      svg?: never;
+    }
     | { markdown: string; image?: never; svg?: never }
     | { svg: string; altText: string; markdown?: never; image?: never };
   readonly completionEvents?: string[];
@@ -209,20 +209,20 @@ export interface IExtensionCapabilities {
 
 export type LimitedWorkspaceSupportType = 'limited';
 export type ExtensionUntrustedWorkspaceSupportType = boolean | LimitedWorkspaceSupportType;
-export type ExtensionUntrustedWorkspaceSupport =
-  | { supported: true }
-  | { supported: false; description: string }
-  | {
+export type ExtensionUntrustedWorkspaceSupport
+  = | { supported: true }
+    | { supported: false; description: string }
+    | {
       supported: LimitedWorkspaceSupportType;
       description: string;
       restrictedConfigurations?: string[];
     };
 
 export type ExtensionVirtualWorkspaceSupportType = boolean | LimitedWorkspaceSupportType;
-export type ExtensionVirtualWorkspaceSupport =
-  | boolean
-  | { supported: true }
-  | { supported: false | LimitedWorkspaceSupportType; description: string };
+export type ExtensionVirtualWorkspaceSupport
+  = | boolean
+    | { supported: true }
+    | { supported: false | LimitedWorkspaceSupportType; description: string };
 
 export interface IRelaxedExtensionManifest {
   name: string;

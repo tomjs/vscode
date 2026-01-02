@@ -1,12 +1,12 @@
+import type { CLIOptions } from './types';
 import fs from 'node:fs';
 import path from 'node:path';
 import Logger from '@tomjs/logger';
 import { mkdirpSync } from '@tomjs/node';
-import type { CLIOptions } from './types';
 
 export const logger = new Logger({ directory: 'vscode-dev/logs' });
 
-export const formatCode = async (code: string, cwd: string) => {
+export async function formatCode(code: string, cwd: string) {
   try {
     const prettier = await import('prettier');
 
@@ -39,12 +39,13 @@ export const formatCode = async (code: string, cwd: string) => {
             },
       );
     }
-  } catch (e: any) {
+  }
+  catch (e: any) {
     logger.error(e);
   }
 
   return code.replace(/^\s+/gm, '').replace(/\n/g, '');
-};
+}
 
 function getDtsDir(cwd: string) {
   const folders = ['types', 'extension', 'src'];

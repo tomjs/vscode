@@ -67,7 +67,7 @@ export class WebviewApi<StateType = any> {
     this.setOptions(options || {});
     this.webviewApi = acquireVsCodeApi();
 
-    window.addEventListener('message', event => {
+    window.addEventListener('message', (event) => {
       const message = event.data || {};
       const { typeKey, dataKey } = this._options;
       this._runListener(message[typeKey ?? TYPE_KEY], message[dataKey ?? DATA_KEY]);
@@ -124,7 +124,6 @@ export class WebviewApi<StateType = any> {
    * @param type the message type
    * @param data the message content
    * @param options
-   * @returns
    */
   public postAndReceive<T>(
     type: string | number,
@@ -144,20 +143,22 @@ export class WebviewApi<StateType = any> {
 
       const intervalId = setInterval(post, opts.interval ?? INTERVAL);
 
+      const _runListener = this._runListener;
+
       const timeoutId = setTimeout(() => {
         window.removeEventListener('message', receive);
         clearInterval(intervalId);
 
-        this._runListener(type, undefined, new Error('Timeout'));
+        _runListener(type, undefined, new Error('Timeout'));
 
         reject(new Error('Timeout'));
       }, opts.timeout ?? TIMEOUT);
 
-      const receive = (e: MessageEvent<any>) => {
+      function receive(e: MessageEvent<any>) {
         if (
-          !e.origin.startsWith('vscode-webview://') ||
-          !e.data ||
-          e.data[opts.typeKey ?? TYPE_KEY] !== type
+          !e.origin.startsWith('vscode-webview://')
+          || !e.data
+          || e.data[opts.typeKey ?? TYPE_KEY] !== type
         ) {
           return;
         }
@@ -167,7 +168,7 @@ export class WebviewApi<StateType = any> {
         clearInterval(intervalId);
 
         const res = e.data[opts.dataKey ?? DATA_KEY];
-        this._runListener(type, res);
+        _runListener(type, res);
         resolve(res);
       };
 

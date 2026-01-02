@@ -1,39 +1,48 @@
 {
   "name": "@tomjs/vscode-dev",
+  "type": "commonjs",
   "version": "3.1.1",
   "description": "Some development tools to simplify the development of vscode extensions",
+  "author": {
+    "name": "Tom Gao",
+    "email": "tom@tomgao.cc"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomjs/vscode.git"
+  },
   "keywords": [
     "vscode",
     "extension",
     "dev",
     "cli"
   ],
-  "author": {
-    "name": "Tom Gao",
-    "email": "tom@tomgao.cc"
-  },
-  "license": "MIT",
-  "engines": {
-    "node": ">=16"
+  "bin": {
+    "vscode-dev": "./dist/cli.js"
   },
   "files": [
     "dist"
   ],
-  "bin": {
-    "vscode-dev": "./dist/cli.js"
+  "engines": {
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tomjs/vscode.git"
-  },
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup",
+    "dev": "tsdown --watch",
+    "build": "tsdown",
     "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@tomjs/logger": "^1.1.2",
@@ -45,13 +54,5 @@
   },
   "devDependencies": {
     "@tomjs/vscode-types": "workspace:^"
-  },
-  "peerDependencies": {
-    "prettier": "^3.0.0"
-  },
-  "peerDependenciesMeta": {
-    "prettier": {
-      "optional": true
-    }
   }
 }
