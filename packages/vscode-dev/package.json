@@ -1,7 +1,7 @@
 {
   "name": "@tomjs/vscode-dev",
   "type": "commonjs",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Some development tools to simplify the development of vscode extensions",
   "author": {
     "name": "Tom Gao",

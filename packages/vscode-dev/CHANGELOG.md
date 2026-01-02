@@ -1,3 +1,8 @@
+## [3.1.2](https://github.com/tomjs/vscode/compare/vscode-dev%403.1.1...vscode-dev%403.1.2) (2026-01-02)
+
+- fix: gen vscode code  [134c283](https://github.com/tomjs/vscode/commit/134c283)
+- refactor: use antfu eslint and tsdown  [6e62267](https://github.com/tomjs/vscode/commit/6e62267)
+
 ## [3.1.1](https://github.com/tomjs/vscode/compare/vscode-dev%403.1.0...vscode-dev%403.1.1) (2026-01-02)
 
 - fix: vscode-dev d.ts [f667785](https://github.com/tomjs/vscode/commit/f667785)
