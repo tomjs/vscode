@@ -1,3 +1,7 @@
+## [3.1.1](https://github.com/tomjs/vscode/compare/vscode-dev%403.1.0...vscode-dev%403.1.1) (2026-01-02)
+
+- fix: vscode-dev d.ts [f667785](https://github.com/tomjs/vscode/commit/f667785)
+
 ## [3.1.0](https://github.com/tomjs/vscode/compare/vscode-dev%403.0.2...vscode-dev%403.1.0) (2026-01-02)
 
 - feat: vscode-dev change NlsI18n code style [f6e7ca8](https://github.com/tomjs/vscode/commit/f6e7ca8)
