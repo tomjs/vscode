@@ -116,13 +116,13 @@ declare module '@tomjs/vscode' {
   type I18nMessageType = ${nslKeys.map(key => `'${key}'`).join(' | ') || 'undefined'};
 
   interface NlsI18n {
-    t(message: I18nMessageType, ...args: Array<string | number | boolean>): string;
-    t(message: I18nMessageType, args: Record<string, any>): string;
-    t(
+    t: (message: I18nMessageType, ...args: Array<string | number | boolean>) => string;
+    t: (message: I18nMessageType, args: Record<string, any>) => string;
+    t: (
       ...params:
         | [message: I18nMessageType, ...args: Array<string | number | boolean>]
         | [message: I18nMessageType, args: Record<string, any>]
-    ): string;
+    ) => string;
   }
 }
   `;
